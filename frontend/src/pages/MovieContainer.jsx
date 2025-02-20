@@ -3,6 +3,7 @@ import { LatestRelease, SliderMovies } from '../components'
 
 const MovieContainer = () => {
     const [movies, setMovies] = useState([])
+    const [moviess,setMoviess] = useState([])
 
     const [serial, setSerial] = useState([])
 
@@ -30,7 +31,8 @@ setSerial(result.results)
 
 
 
-    const fetchMainMoives  = useCallback(async()=>{
+    const fetchMainMoives  = async()=>{
+      console.log("main movies")
         const url = `https://api.themoviedb.org/3/movie/${searchBy}?language=en-US&page=1`;
 const options = {
   method: 'GET',
@@ -46,27 +48,36 @@ const result = await data.json()
 
 setMovies(result.results)
 
+if(moviess.length > 2){
+
+}else{
+  setMoviess(result.results)
+}
+
     
-} ,[searchBy])
+} 
+
+console.log(searchBy)
 
 
 useEffect(()=>{
 
   fetchMainMoives()
-  fetchSeries(  )
-    
+},[searchBy])
 
-
+useEffect(()=>{
+  fetchSeries()
 },[])
   return (
     <div className=' h-full bg-amber-300 overflow-y-auto  continaer'>  
      <div className='bg-gray-500 relative w-full  h-[100%] p-[9px] '>
-            <SliderMovies movies={movies}/>
+            <SliderMovies movies={moviess}/>
      </div>
      <div className='w-full h-auto '>
-        <LatestRelease movies={serial} title={searchBy}/>
+        <LatestRelease movies={movies}  title={searchBy} show={true} setSearchBy={setSearchBy}  />
 
-        <LatestRelease movies={movies} title={"Latest Release..."}/>
+        <LatestRelease movies={serial} title={"Latest Release..."} />
+
 
 
      </div>
