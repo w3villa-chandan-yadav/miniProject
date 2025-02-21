@@ -2,9 +2,13 @@ import React from 'react';
 import { SiFireship } from "react-icons/si";
 import { BsChatLeftHeartFill } from "react-icons/bs";
 import { MdWatchLater } from "react-icons/md";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MdExplore } from "react-icons/md";
 import { HiHome } from "react-icons/hi";
+import { useSelector } from 'react-redux';
+import { IoLogOutSharp } from "react-icons/io5";
+import { toast } from 'react-toastify';
+
 
 
 
@@ -13,9 +17,21 @@ import { HiHome } from "react-icons/hi";
 
 
 const Sidebar = () => {
+    const navigate = useNavigate()
+
+    const {user} = useSelector((state)=>state.user)
+
+    const handleLogout =()=>{
+        toast.success("Logout")
+        localStorage.clear();
+        window.location.reload()
+        
+    }
+
+
   return (
     <div className='w-[90%] h-full flex flex-nowrap relative group mx-auto '>
-        <div className='w-full flex flex-col items-center h-full bg-gray-300 '>
+        <div className='w-full flex flex-col items-center h-full bg-white rounded-md '>
         <Link
         to="/"
         className='px-[3px] py-[10px]   border-b-[1px] border-gray-400 w-full '>
@@ -25,19 +41,29 @@ const Sidebar = () => {
             <Link className='px-[3px] py-[10px]   border-b-[1px] border-gray-400 w-full '>
                 <SiFireship className='text-3xl mx-auto'/>
             </Link>
-            <Link   
+
+           {user && <Link   
               to="/liked"
                 className='px-[3px] py-[10px]   border-b-[1px] border-gray-400 w-full '>
                 <BsChatLeftHeartFill className='text-3xl mx-auto'/>
-            </Link>
-            <Link
+            </Link>}
+
+           {user && <Link
             to="/watchLater"
             className='px-[3px] py-[10px]   border-b-[1px] border-gray-400 w-full '>
                 <MdWatchLater className='text-3xl mx-auto'/>
-            </Link>
+            </Link>}
             <Link to={"/latest/trending"} className='px-[3px] py-[10px]   border-b-[1px] border-gray-400 w-full '>
                 <MdExplore  className='text-3xl mx-auto'/>
             </Link>
+            {
+              user &&  <button 
+              onClick={handleLogout}
+              className='px-[3px] py-[10px]   border-b-[1px] border-gray-400 w-full '>
+                <IoLogOutSharp  className='text-3xl mx-auto'/>
+            </button>
+
+            }
             
 
         </div>
@@ -52,20 +78,28 @@ const Sidebar = () => {
             <Link  className='px-[3px] py-[13px]  text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
                 Trending
             </Link>
-            <Link 
+           {user && <Link 
             to="/liked"
             className='px-[3px] py-[13px]  text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
                 Favourite
-            </Link>
-            <Link 
+            </Link>}
+           {user && <Link 
             to="/watchLater"
             className='px-[3px] py-[13px] text-nowrap text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
                Watch Later
-            </Link>
+            </Link>  }
             <Link to="/latest/trending" 
             className='px-[3px] py-[13px]  text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
               Gallery
             </Link>
+            {
+              user &&  <button 
+              onClick={handleLogout}
+              className='px-[3px] py-[13px] text-left text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
+                LogOut
+            </button>
+
+            }
         </div>
 
 

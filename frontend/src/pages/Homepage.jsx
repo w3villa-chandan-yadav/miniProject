@@ -4,14 +4,14 @@ import { Sidebar } from '../components'
 
 const Homepage = () => {
   return (
-    <div className='w-screen custom-height bg-gray-500 flex '>
+    <div className='w-screen custom-height bg-indigo-600 flex '>
         {/* sidebar */}
-        <div className='w-[70px] shrink-0 bg-amber-300 '>
+        <div className='w-[70px] shrink-0 bg-indigo-600 '>
             <Sidebar/>
         </div>
 
         {/* main outelt */}
-        <div className='w-full flex-1 bg-pink-300'>
+        <div className='w-full flex-1 relative '>
             <Outlet/>
         </div>
     

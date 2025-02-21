@@ -69,8 +69,8 @@ useEffect(()=>{
   fetchSeries()
 },[])
   return (
-    <div className=' h-full bg-amber-300 overflow-y-auto  continaer'>  
-     <div className='bg-gray-500 relative w-full  h-[100%] p-[9px] '>
+    <div className=' h-full  overflow-y-auto  continaer'>  
+     <div className=' relative w-full  h-[100%] p-[9px] '>
             <SliderMovies movies={moviess}/>
      </div>
      <div className='w-full h-auto '>

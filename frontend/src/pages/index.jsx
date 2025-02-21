@@ -4,6 +4,8 @@ import DisplayMovie from "./DisplayMovie";
 import Tranding from "./Tranding";
 import WatchLater from "./WatchLater";
 import Favourite from "./Favourite";
+import Login from "./Login";
+import SignIn from "./SignIn";
 
 
-export {Homepage ,MovieContainer,DisplayMovie,Tranding ,WatchLater ,Favourite}
+export {Homepage ,MovieContainer,DisplayMovie,Tranding ,WatchLater ,Favourite ,Login,SignIn}

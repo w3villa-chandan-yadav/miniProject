@@ -3,13 +3,15 @@ import { FaPlay } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa6";
 import { FaRegBookmark } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
-import { useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { SingleCard } from '../components';
+// import { useParams } from 'react-router-dom'
 
 const Tranding = () => {
-    const params = useParams()
-    const [pageNo, setPageNo] = useState(1) // Initialize pageNo as 1
+    // const params = useParams()
+    const [pageNo, setPageNo] = useState(1) 
     const [data, setData] = useState([])
-    const totalPageNoRef = useRef(0) // Use useRef for tracking totalPageNo
+    const totalPageNoRef = useRef(0) 
     const [loading, setLoading] = useState(false);
     const container = useRef()
 
@@ -20,7 +22,7 @@ const Tranding = () => {
             method: 'GET',
             headers: {
                 accept: 'application/json',
-                Authorization: 'Bearer <Your_Token_Here>'
+                Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MTI1MGE2OTA1ZmRlNWU1MzM4NWFiNzI5MDc4ODdmYiIsIm5iZiI6MTczODA4MzUyOS42MTksInN1YiI6IjY3OTkwY2M5MWJlMTE2NDA5YzIzN2U2ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.VNgeCAPLxgahzVVJBJ6VbSoJefe8Egk80GgKLRVKte8'
             }
         };
 
@@ -106,28 +108,30 @@ const Tranding = () => {
         <div
             ref={container}
             className='p-2 w-full h-full overflow-x-scroll py-4'>
-            <h2 className='poppins font-bold'>Trending</h2>
+            <h2 className='poppins font-bold text-center px-3 py-4'>Trending</h2>
             <div className='w-fit mx-auto gap-5 h-full grid grid-cols-5 mb-5'>
                 {data.map((ele, index) => (
-                    <div
-                        key={index} className='w-[210px] relative shrink-0 h-[370px] group rounded-md overflow-hidden bg-[rgba(255,255,255,0.4)] backdrop-blur-[2px]'>
-                        <FaPlay className='absolute top-[50%] left-[50%] z-20 -translate-x-1/2 -translate-y-1/2 text-3xl text-white hidden group-hover:block cursor-pointer '/>
-                        <FaHeart className={`absolute top-[10px] right-[10px] z-20 text-2xl ${true ? "text-red-500" : "text-white"} cursor-pointer `}/>
-                        <img className='w-full h-[320px] group-hover:scale-95 transition-all duration-200 ' src={`https://image.tmdb.org/t/p/original/${ele?.poster_path}`} />
-                        <div className='flex justify-between items-center mx-2'>
-                            {ele.media_type !== "tv" ?
-                                <h4 className='poppins font-bold ml-1 text-sm'>{ele?.original_title?.length < 20 ? ele?.original_title : `${ele?.original_title?.substr(0, 19)}...`}</h4> :
-                                <h4 className='poppins font-bold ml-1 text-sm'>{ele?.original_name?.length < 13 ? ele?.original_name : `${ele?.original_name?.substr(0, 12)}...`}</h4>
-                            }
-                            <div className='cursor-pointer'>
-                                {false ? <FaBookmark /> : <FaRegBookmark />}
-                            </div>
-                        </div>
-                        <div className='mx-3 mt-2 poppins flex justify-between font-semibold text-xs '>
-                            <span> Rating <span>{ele?.vote_average}</span></span>
-                            <span>{ele.media_type !== "tv" ? ele?.release_date : ele?.first_air_date}</span>
-                        </div>
-                    </div>
+                    // <Link
+                    // to={`/details/movie/${ele.id}`}
+                    //     key={index} className='w-[210px] relative shrink-0 h-[370px] group rounded-md overflow-hidden bg-[rgba(255,255,255,0.4)] backdrop-blur-[2px]'>
+                    //     <FaPlay className='absolute top-[50%] left-[50%] z-20 -translate-x-1/2 -translate-y-1/2 text-3xl text-white hidden group-hover:block cursor-pointer '/>
+                    //     {/* <FaHeart className={`absolute top-[10px] right-[10px] z-20 text-2xl ${true ? "text-red-500" : "text-white"} cursor-pointer `}/> */}
+                    //     <img className='w-full h-[320px] group-hover:scale-95 transition-all duration-200 ' src={`https://image.tmdb.org/t/p/original/${ele?.poster_path}`} />
+                    //     <div className='flex justify-between items-center mx-2'>
+                    //         {ele.media_type !== "tv" ?
+                    //             <h4 className='poppins font-bold ml-1 text-sm'>{ele?.original_title?.length < 20 ? ele?.original_title : `${ele?.original_title?.substr(0, 19)}...`}</h4> :
+                    //             <h4 className='poppins font-bold ml-1 text-sm'>{ele?.original_name?.length < 13 ? ele?.original_name : `${ele?.original_name?.substr(0, 12)}...`}</h4>
+                    //         }
+                    //         {/* <div className='cursor-pointer'>
+                    //             {false ? <FaBookmark /> : <FaRegBookmark />}
+                    //         </div> */}
+                    //     </div>
+                    //     <div className='mx-3 mt-2 poppins flex justify-between font-semibold text-xs '>
+                    //         <span> Rating <span>{ele?.vote_average}</span></span>
+                    //         <span>{ele.media_type !== "tv" ? ele?.release_date : ele?.first_air_date}</span>
+                    //     </div>
+                    // </Link>
+                    <SingleCard ele={ele} key={index}/>
                 ))}
             </div>
         </div>
