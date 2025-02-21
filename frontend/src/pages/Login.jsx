@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { auth } from '../components/firebase';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { LoginGoogle } from '../components';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -86,8 +87,8 @@ const Login = () => {
 
 
   return (
-    <div className="h-auto min-h-screen py-3 flex justify-center items-center overflow-hidden bg-gray-900 text-white">
-      <div className="w-full max-w-md bg-gray-800 p-8 rounded-lg shadow-lg">
+    <div className="h-auto min-h-screen py-3 flex justify-center items-center overflow-hidden   dark:bg-black">
+      <div className="w-full max-w-md dark:bg-white  bg-gray-300 p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl font-semibold mb-3 text-center">Create Account</h2>
         <form onSubmit={handleSubmit}>
           {/* First Name */}
@@ -99,7 +100,7 @@ const Login = () => {
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
-              className="w-full px-3 py-2 mt-1 rounded-md border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 mt-1 rounded-md border border-gray-700 dark:bg-white dark:text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
           </div>
@@ -113,7 +114,7 @@ const Login = () => {
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              className="w-full px-3 py-2 mt-1 rounded-md border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 mt-1 rounded-md border border-gray-700 dark:bg-white dark:text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>}
           </div>
@@ -127,7 +128,7 @@ const Login = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full px-3 py-2 mt-1 rounded-md border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 mt-1 rounded-md border border-gray-700 dark:bg-white dark:text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
           </div>
@@ -141,7 +142,7 @@ const Login = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full px-3 py-2 mt-1 rounded-md border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 mt-1 rounded-md border border-gray-700 dark:bg-white dark:text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password}</p>}
           </div>
@@ -155,7 +156,7 @@ const Login = () => {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              className="w-full px-3 py-2 mt-1 rounded-md border border-gray-700 bg-gray-900 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 mt-1 rounded-md border border-gray-700 dark:bg-white dark:text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             {errors.confirmPassword && <p className="text-red-500 text-sm mt-1">{errors.confirmPassword}</p>}
           </div>
@@ -169,10 +170,11 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              className="w-full px-3 py-2 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 dark:bg-gray-700 bg-white cursor-pointer dark:text-white font-semibold rounded-md dark:hover:bg-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             >
               Sign Up
             </button>
+            <LoginGoogle/>
           </div>
         </form>
       </div>

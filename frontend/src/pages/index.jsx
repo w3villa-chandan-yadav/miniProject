@@ -6,6 +6,7 @@ import WatchLater from "./WatchLater";
 import Favourite from "./Favourite";
 import Login from "./Login";
 import SignIn from "./SignIn";
+import Lostpage from "./Lostpage";
 
 
-export {Homepage ,MovieContainer,DisplayMovie,Tranding ,WatchLater ,Favourite ,Login,SignIn}
+export {Homepage ,MovieContainer,DisplayMovie,Tranding ,WatchLater ,Favourite ,Login,SignIn,Lostpage}

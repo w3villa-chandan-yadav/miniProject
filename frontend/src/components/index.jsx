@@ -5,5 +5,6 @@ import LatestRelease from "./LatestRelease";
 import { SingleCard } from "./SingleCard";
 import VideoPlayer from "./VideoPlayer";
 import ProtectedRoute from "./ProtectedRoute";
+import LoginGoogle from "./GoogleLogin";
 
-export {Header ,Sidebar,SliderMovies,LatestRelease,SingleCard ,VideoPlayer ,ProtectedRoute}
+export {Header ,Sidebar,SliderMovies,LatestRelease,SingleCard ,VideoPlayer ,ProtectedRoute ,LoginGoogle}

@@ -30,37 +30,37 @@ const Sidebar = () => {
 
 
   return (
-    <div className='w-[90%] h-full flex flex-nowrap relative group mx-auto '>
-        <div className='w-full flex flex-col items-center h-full bg-white rounded-md '>
+    <div className='md:w-[90%] w-full h-full flex flex-nowrap relative md:bg-transparent bg-white group mx-auto '>
+        <div className='w-full flex md:flex-col items-center h-full  rounded-md '>
         <Link
         to="/"
-        className='px-[3px] py-[10px]   border-b-[1px] border-gray-400 w-full '>
-                <HiHome className='text-3xl mx-auto'/>
+        className='px-[3px] py-[10px]   border-b-[1px] border-gray-600 w-full '>
+                <HiHome className='md:text-3xl text-xl dark:text-white text-gray-700  mx-auto'/>
             </Link>
 
-            <Link className='px-[3px] py-[10px]   border-b-[1px] border-gray-400 w-full '>
-                <SiFireship className='text-3xl mx-auto'/>
+            <Link className='px-[3px] py-[10px]   border-b-[1px] border-gray-600 w-full '>
+                <SiFireship className='md:text-3xl text-xl dark:text-white text-gray-700  mx-auto'/>
             </Link>
 
            {user && <Link   
               to="/liked"
-                className='px-[3px] py-[10px]   border-b-[1px] border-gray-400 w-full '>
-                <BsChatLeftHeartFill className='text-3xl mx-auto'/>
+                className='px-[3px] py-[10px]   border-b-[1px] border-gray-600 w-full '>
+                <BsChatLeftHeartFill className='md:text-3xl text-xl dark:text-white text-gray-700   mx-auto'/>
             </Link>}
 
            {user && <Link
             to="/watchLater"
-            className='px-[3px] py-[10px]   border-b-[1px] border-gray-400 w-full '>
-                <MdWatchLater className='text-3xl mx-auto'/>
+            className='px-[3px] py-[10px]   border-b-[1px] border-gray-600 w-full '>
+                <MdWatchLater className='md:text-3xl text-xl dark:text-white text-gray-700  mx-auto'/>
             </Link>}
-            <Link to={"/latest/trending"} className='px-[3px] py-[10px]   border-b-[1px] border-gray-400 w-full '>
-                <MdExplore  className='text-3xl mx-auto'/>
+            <Link to={"/latest/trending"} className='px-[3px] py-[10px]   border-b-[1px] border-gray-600 w-full '>
+                <MdExplore  className='md:text-3xl text-xl dark:text-white text-gray-700   mx-auto'/>
             </Link>
             {
               user &&  <button 
               onClick={handleLogout}
-              className='px-[3px] py-[10px]   border-b-[1px] border-gray-400 w-full '>
-                <IoLogOutSharp  className='text-3xl mx-auto'/>
+              className='px-[3px] py-[10px]   border-b-[1px] border-gray-600 w-full '>
+                <IoLogOutSharp  className='md:text-3xl text-xl dark:text-white text-gray-700   mx-auto'/>
             </button>
 
             }

@@ -1,11 +1,5 @@
 import React from 'react'
-import { FaPlay } from "react-icons/fa";
-import { FaBookmark } from "react-icons/fa6";
-import { FaRegBookmark } from "react-icons/fa6";
-import { FaHeart } from "react-icons/fa";
-import { Link } from 'react-router-dom';
 import { useSelector,useDispatch } from 'react-redux';
-import { addFavourt,addWachLater } from '../redux/slices/moviesSlice';
 import { SingleCard } from './SingleCard';
 
 
@@ -27,15 +21,15 @@ const LatestRelease = ({movies,title,show=false,setSearchBy,background=false}) =
    
   
   return (
-    <section className={`w-[93vw]  ${background ?  "": `bg-[url("https://cdn1.epicgames.com/offer/b2818b59c0bb420e9647983dfd254931/EGS_Octopus_InsomniacGamesNixxesSoftware_S1_2560x1440-f27da78f484626718d1e22e7d6950ca5")]`}  bg-cover bg-center bg-fixed  overflow-hidden h-full mx-auto py-5`}>
+    <section className={`w-[93vw]  bg-cover bg-center bg-fixed  overflow-hidden h-full mx-auto py-5`}>
          {
               show ?   <div className='my-2'>
                 
                 <select
-                className='px-3 py-2 outline-none border-[1px] text-white poppins font-bold border-transparent active:border-[1px]'
+                className='px-3 py-2 outline-none border-[1px] cursor-pointer dark:text-white  dark:bg-black   poppins font-bold border-transparent active:border-[1px]'
                 onChange={(e)=>{setSearchBy(e.target.value)}}
                 >
-                     <option value="popular" >
+                     <option value="popular"  >
                         Popular
                     </option>
                 <option value="now_playing"  >
@@ -51,7 +45,7 @@ const LatestRelease = ({movies,title,show=false,setSearchBy,background=false}) =
                   
                 </select>
                 
-                  </div>   :      <h3 className='ml-1 poppins font-semibold text-white text-xl  py-3'>{title}</h3> 
+                  </div>   :      <h3 className='ml-1 poppins font-semibold dark:text-white text-black text-xl  py-3'>{title}</h3> 
 
          }
 

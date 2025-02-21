@@ -5,6 +5,7 @@ import {toast} from "react-toastify"
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../redux/slices/useSlice';
 import { Link, useNavigate } from 'react-router-dom';
+import { LoginGoogle } from '../components';
 
 
 const SignIn = () => {
@@ -58,30 +59,30 @@ const SignIn = () => {
   },[])
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-900">
-      <div className="w-full max-w-md bg-white p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold text-center mb-6">Sign Up</h2>
+    <div className="flex justify-center items-center min-h-screen dark:bg-black">
+      <div className="w-full max-w-md dark:bg-white bg-gray-300  p-6 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-semibold text-gray-700 text-center mb-6">Sign Up</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="email" className="block text-sm font-medium text-gray-600">Email</label>
+            <label htmlFor="email" className="block text-sm font-medium dark:text-gray-600 text-gray-800">Email</label>
             <input
               type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
+              className="w-full p-3 mt-1 border dark:border-gray-300  border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
               required
             />
           </div>
 
           <div className="mb-6">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-600">Password</label>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-800 dark:text-gray-600">Password</label>
             <input
               type="password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
+              className="w-full p-3 mt-1 border dark:border-gray-300  border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-600"
               required
             />
           </div>
@@ -97,10 +98,11 @@ const SignIn = () => {
 
           <button
             type="submit"
-            className="w-full py-3 mt-4 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full py-3 mt-4 dark:bg-gray-700  text-black bg-white  cursor-pointer dark:text-white font-semibold rounded-md hover:dark:bg-black focus:outline-none focus:ring-2 "
           >
             Sign Up
           </button>
+          <LoginGoogle/>
         </form>
       </div>
     </div>

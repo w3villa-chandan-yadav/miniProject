@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logoImage from "../assets/icegif-747.gif"
 import { FaSearch } from "react-icons/fa";
 import imagess from "../assets/icon.webp"
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { MdDarkMode } from "react-icons/md";
+
 
 
 let timerId
 
 const Header = () => {
+  const [mode,setMode] = useState("black");
 
+  const navigate = useNavigate()
   const {user} = useSelector((state)=>state.user)
 
 
@@ -77,20 +81,48 @@ const Header = () => {
 
     }
 
-    
+      useEffect(()=>{
+
+      const body =   document.querySelector("html");
+
+      const attribute = body.getAttribute("class")
+
+        body.setAttribute("class",mode)
+
+      // console.log(attribute )
+
+
+
+      },[mode])
 
 
 
 
   return (
-    <div className='w-screen h-[60px] max-w-[16 00px] bg-indigo-600 mx-auto py-1'>
-        <div className='w-[98%] px-2 bg-white rounded-md mx-auto h-full flex justify-between items-center'>
-            <div className='h-full  bg-green-300 flex items-center gap-2'>
-                <img src={logoImage} className='w-full h-full'/>
+    <div className='w-screen h-[60px] max-w-[1600px] dark:border-amber-50 border-b-[1px] mx-auto py-1'>
+        <div className='w-full px-2  rounded-md mx-auto h-full flex justify-between items-center'>
+            <div className='h-full   flex items-center gap-2'>
+                <img 
+                onClick={()=>navigate("/")}
+                src={logoImage} className='  rounded-full cursor-pointer h-full'/>
             </div>
-            <div className='flex items-center'>
+            
+            <div className='flex items-center  gap-3 justify-end flex-1'>
+            <div
+              className='text-black '
+              onClick={()=>setMode((pre)=>{
+                if(pre ==="dark"){
+                  return "light"
+                }else{
+                 return "dark"
+                }
+              })} 
+              >
+                {mode ==="dark" ? <MdDarkMode className='text-white text-3xl'/> : <MdDarkMode className='text-black text-3xl'/>}
+              </div>
+              
                 <div 
-                className=' w-full h-full gap-2   relative py-1 px-1  rounded-2xl shadow-2xl flex items-center justify-between'
+                className=' w-fit h-full gap-2   relative md:py-2 py-1  border-[1px] rounded-md  md:rounded-2xl dark:border-amber-50 md:px-3  px-1  flex items-center justify-between'
                 >   
                  
                     <input 
@@ -104,7 +136,7 @@ const Header = () => {
                     }}
                     onChange={(e)=>handleInput(e)}
                     placeholder='search...'
-                    className='outline-none'
+                    className='outline-none dark:text-white  md:w-full w-[100px]'  
                     />
                       { searchingData.length >=1 &&
                     <div className='w-[250px] rounded-md overflow-y-auto max-h-[250px] h-auto absolute top-[120%] z-30 bg-[rgba(245,245,245,0.6)] backdrop-blur-[2px]'>
@@ -114,7 +146,9 @@ const Header = () => {
                                 <div key={ind}
                                 className='px-3 py-3 '
                                 onClick={()=>{setInput(ele.title)
+                                  navigate(`/details/movie/${ele.id}`)
                                   setSearchingData([])
+                                  
                                 }}
                                 >{ele.title}
                                   </div>
@@ -133,7 +167,7 @@ const Header = () => {
                   alt='userIcom'/> :
                   <Link
                   to="signIn"
-                  className='bg-blue-600 px-3 py-2 rounded-xl cursor-pointer'>Login</Link>
+                  className='dark:bg-black bg-gray-200 dark:text-white text-gray-700 px-3  poppins font-semibold py-2 rounded-xl cursor-pointer'>Login</Link>
                  }
                 </div>
             </div>

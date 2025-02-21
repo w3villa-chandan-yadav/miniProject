@@ -204,14 +204,6 @@ console.log(result)
 
   return (
     <section className='w-full h-full overflow-y-auto  ' 
-    style={{
-      backgroundImage: movie?.backdrop_path
-        ? `url(https://image.tmdb.org/t/p/original/${movie.backdrop_path})`
-        : 'none', // Fallback for when backdrop_path is undefined
-        objectFit:"contain",
-        backgroundSize:"100% 100%",
-        backgroundPosition:"center top "
-    }}
     >
         <div className='w-full h-[600px] bg-gray-600 relative overflow-hidden'>
           <div className='absolute top-2 right-2  bg-black z-20 rounded-xl h-auto '>
@@ -293,8 +285,8 @@ console.log(result)
                          return(
                           ele.profile_path && <div>
                               <img src={`https://image.tmdb.org/t/p/original/${ele?.profile_path}`} className='w-[100px] h-[100px] object-cover rounded-full' />
-                          <p className='text-nowrap text-center'>{ele.name.length > 13 ? ele.name.substr(0,12) : ele.name}</p>    
-                          <p className='text-center'>{ele.known_for_department}</p>
+                          <p className='text-nowrap text-center dark:text-white'>{ele.name.length > 13 ? ele.name.substr(0,12) : ele.name}</p>    
+                          <p className='text-center dark:text-white'>{ele.known_for_department}</p>
                            </div>
                           
                          )
@@ -306,8 +298,8 @@ console.log(result)
                   return(
                    ele.profile_path && <div>
                        <img src={`https://image.tmdb.org/t/p/original/${ele?.profile_path}`} className='w-[100px] h-[100px] object-cover rounded-full' />
-                   <p className='text-nowrap text-center'>{ele.name.length > 13 ? ele.name.substr(0,12) : ele.name}</p>    
-                   <p className='text-center'>{ele.known_for_department}</p>
+                   <p className='text-nowrap text-center dark:text-white'>{ele.name.length > 13 ? ele.name.substr(0,12) : ele.name}</p>    
+                   <p className='text-center dark:text-white'>{ele.known_for_department}</p>
                     </div>
                    
                   )

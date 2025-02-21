@@ -70,13 +70,13 @@ useEffect(()=>{
 },[])
   return (
     <div className=' h-full  overflow-y-auto  continaer'>  
-     <div className=' relative w-full  h-[100%] p-[9px] '>
+     <div className=' relative w-full  h-[350px] md:h-[100%] p-[9px] '>
             <SliderMovies movies={moviess}/>
      </div>
      <div className='w-full h-auto '>
-        <LatestRelease movies={movies}  title={searchBy} show={true} setSearchBy={setSearchBy}  />
+        <LatestRelease movies={movies}  title={searchBy} show={true} setSearchBy={setSearchBy}  background={true}  />
 
-        <LatestRelease movies={serial} title={"Latest Release..."} />
+        <LatestRelease movies={serial} title={"Latest Release..."}  background={true  }/>
 
 
 
