@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {Routes,Route} from "react-router-dom"
+import imageLoading from "./assets/loading.gif"
 
 import './App.css'
 import { Header, ProtectedRoute } from './components';
@@ -9,10 +10,34 @@ import { DisplayMovie, Favourite, Homepage, Login, Lostpage, MovieContainer, Sig
 
 function App() {
  
+  const [loading,setLoading] = useState(true) ;
+
+
+  useEffect(()=>{
+
+    const timer = setTimeout(()=>{
+
+      setLoading(false)
+
+    },1000)
+
+    return()=>{
+      clearTimeout(timer)
+    }
+
+
+  },[])
  
 
   return (
-   <div className='w-screen h-auto overflow-x-hidden dark:bg-black bg-white'>
+    <div className='dark:bg-black bg-gray-400 relative'>
+     {
+      loading &&  <div className='w-full h-full overflow-hidden  absolute inset-0 z-50'>
+      <img className='w-full h-full ' src={imageLoading} />
+
+    </div>
+     }
+   <div className='w-screen h-auto overflow-x-hidden dark:bg-black bg-white max-w-[1950px] mx-auto'>
     <Header/>
     <Routes>
     <Route path='/login' element={<Login/>} />
@@ -32,6 +57,7 @@ function App() {
     
     
 
+   </div>
    </div>
   )
 }

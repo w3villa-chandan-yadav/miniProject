@@ -36,7 +36,7 @@ export const SingleCard = ({ele}) => {
   return (
     <Link 
     to={ele.media_type === "tv" ? `/details/tv/${ele.id}` :`/details/movie/${ele.id}`}
-    className='lg:w-[210px] md:w-[180px]  w-[170px] relative shrink-0 lg:h-[370px] md:h-[320px]  h-[300px] group rounded-md overflow-hidden dark:bg-[rgba(255,255,255,0.4)] bg-[rgba(0,0,0,0.1)] backdrop-blur-[2px]'>
+    className='lg:w-[210px] md:w-[180px]  w-[170px] relative shrink-0 lg:h-[370px] md:h-[320px]  h-[300px] group rounded-md overflow-hidden dark:bg-[rgba(255,255,255,0.8)] bg-[rgba(0,0,0,0.7)] dark:text-black text-white backdrop-blur-[2px]'>
         <FaPlay className='absolute top-[50%] left-[50%] z-20 -translate-x-1/2 -translate-y-1/2 text-3xl text-white hidden group-hover:block cursor-pointer '/>
         <FaHeart 
         onClick={(e)=>handleAddfavourt(e,ele)}

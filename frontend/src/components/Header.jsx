@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import logoImage from "../assets/icegif-747.gif"
+import logoImage from "../assets/fire.gif"
 import { FaSearch } from "react-icons/fa";
 import imagess from "../assets/icon.webp"
 import { useSelector } from 'react-redux';
@@ -99,7 +99,7 @@ const Header = () => {
 
 
   return (
-    <div className='w-screen h-[60px] max-w-[1600px] dark:border-amber-50 border-b-[1px] mx-auto py-1'>
+    <div className='w-screen h-[60px] max-w-[1900px] dark:border-amber-50 border-b-[1px] mx-auto py-1'>
         <div className='w-full px-2  rounded-md mx-auto h-full flex justify-between items-center'>
             <div className='h-full   flex items-center gap-2'>
                 <img 

@@ -3,7 +3,8 @@ import { LatestRelease, SliderMovies } from '../components'
 
 const MovieContainer = () => {
     const [movies, setMovies] = useState([])
-    const [moviess,setMoviess] = useState([])
+    const [moviess,setMoviess] = useState([]);
+    const [loading,setLoading] = useState(true)
 
     const [serial, setSerial] = useState([])
 
@@ -11,6 +12,7 @@ const MovieContainer = () => {
 
 
     const fetchSeries = useCallback(async()=>{
+      setLoading(true)
 
         const url = 'https://api.themoviedb.org/3/trending/tv/week?language=hindi';
 const options = {
@@ -25,7 +27,10 @@ const data =  await fetch(url,options) ;
 
 const result = await data.json()
 
+const time =await new Promise((r)=>setTimeout(()=>r("promise resolve"),4000))
+
 setSerial(result.results)
+setLoading(false)
 
     },[])
 
@@ -70,13 +75,13 @@ useEffect(()=>{
 },[])
   return (
     <div className=' h-full  overflow-y-auto  continaer'>  
-     <div className=' relative w-full  h-[350px] md:h-[100%] p-[9px] '>
+     <div className=' relative w-full  h-[350px] lg:h-[100%] md:h-[500px] max-h-[1200px]  p-[9px] '>
             <SliderMovies movies={moviess}/>
      </div>
      <div className='w-full h-auto '>
-        <LatestRelease movies={movies}  title={searchBy} show={true} setSearchBy={setSearchBy}  background={true}  />
+        <LatestRelease movies={movies}  loading={loading} title={searchBy} show={true} setSearchBy={setSearchBy}  background={true}  />
 
-        <LatestRelease movies={serial} title={"Latest Release..."}  background={true  }/>
+        <LatestRelease movies={serial} loading={loading} title={"Latest Release..."}  background={true  }/>
 
 
 

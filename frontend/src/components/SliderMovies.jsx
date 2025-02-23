@@ -11,7 +11,7 @@ const SliderMovies = ({movies}) => {
    
 
   return (
-        <div className='md:h-full h-[350px]  w-full absolute inset-0  '>
+        <div className='lg:h-full md:h-[500px] h-[350px]  max-h-[1200px] w-full absolute inset-0  '>
         <Swiper
         spaceBetween={30}
         pagination={{
@@ -48,14 +48,14 @@ const Slide =({movie})=>{
 
 
     return(
-        <div className='w-full md:h-full h-[350px] relative'>
+        <div className='w-full lg:h-full  md:h-[500px] h-[350px] max-h-[1200px] relative'>
           <div className='w-full h-full bg-radial-[at_50%_55%] from-transparent  via-black/30 to-black/60 to-30%" inset-0 z-[2] absolute'/>
 
           
             <img className='absolute inset-0' loading='lazy' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}/>
             <div className='bg-[rgba(0,0,0,0.4)] px-4 md:py-7 py-3 backdrop-blur-[2px] z-[4]  md:w-[490px] w-[230px] h-auto absolute bottom-[9%] left-[3%] rounded-2xl'>
                 <h2 className='text-left poppins md:text-3xl text-base md:ml-2 font-semibold md:font-bold text-white '>{movie.title}</h2>
-                <p className='text-left poppins md:text-xs text-[10px] md:mt-4 mt-2 mb-1 text-white '>
+                <p className='text-left poppins md:text-sm text-[10px] md:mt-4 mt-2 mb-1 text-white '>
                         {movie.overview}
                 </p>
                 <div>

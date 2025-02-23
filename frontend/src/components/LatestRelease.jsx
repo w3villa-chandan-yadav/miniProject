@@ -1,12 +1,13 @@
 import React from 'react'
 import { useSelector,useDispatch } from 'react-redux';
 import { SingleCard } from './SingleCard';
+import LoadingSkeleton from './LoadingSkeleton';
 
 
 
 
 
-const LatestRelease = ({movies,title,show=false,setSearchBy,background=false}) => {
+const LatestRelease = ({movies,loading,title,show=false,setSearchBy,background=false}) => {
 
     const {watchLater ,favourt}  = useSelector((state)=>state.movie)
     const dispatch = useDispatch()
@@ -50,9 +51,12 @@ const LatestRelease = ({movies,title,show=false,setSearchBy,background=false}) =
          }
 
 
-        <div className='w-full flex gap-4 flex-nowrap overflow-x-auto continaer'>
+        <div className='w-full md:ml-2 flex gap-4 flex-nowrap overflow-x-auto continaer'>
 
 {
+
+ loading ?  [1,2,3,4,5].map((_,index)=><LoadingSkeleton key={index}/>) :
+
     movies.slice(10,20).map((ele,ind)=>{
         return(
 //             

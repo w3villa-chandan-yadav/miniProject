@@ -18,7 +18,8 @@ const DisplayMovie = () => {
     const [similar ,setSimilar] = useState([])
     const [recommendations ,setRecommendations] = useState([])
     const [castt,setCast] = useState([])
-    const [videoPlayer,setVideoPlayer] = useState(false)
+    const [videoPlayer,setVideoPlayer] = useState(false);
+    const [loading,setLoading] = useState(true)
 
     const [isCast ,setIsCrew] = useState(true)
   const [idd,setIdd] = useState()
@@ -54,7 +55,8 @@ const options = {
     }
 
           const fetchSimilar = async()=>{
-            
+            setLoading(true)
+           try {
             let url 
             if(type ==="tv"){
             url =  `https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=1`
@@ -76,15 +78,24 @@ const options = {
         const data = await result.json();
         // console.log(data)
 
+        const timer = await new Promise((r)=>setTimeout(()=>r("promise resolve"),2000))
+
 
         if(data.status_code ===34){
           setSimilar([])  
+          setLoading(false)
         }else{
           console.log('something')
           console.log(data)
           setSimilar(data.results)
+          setLoading(false)
         }
 
+           } catch (error) {
+            setLoading(false)
+           }finally{
+            setLoading(false)
+           }
       }
 
 
@@ -148,6 +159,7 @@ console.log(result)
 
 
       const findVideos = async()=>{
+        console.log("in find video")
         try {
           
           // let url = 'https://api.themoviedb.org/3/movie/2344343/videos?language=en-US';
@@ -157,10 +169,10 @@ console.log(result)
           let url 
 
           if(type ==="tv"){
-            url = `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
-           
-         }else{
             url =  `https://api.themoviedb.org/3/tv/${id}/videos?language=en-US`
+            
+          }else{
+           url = `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`;
       
             }
 
@@ -176,7 +188,7 @@ console.log(result)
 
              const result = await data.json();
 
-             console.log(result.results[0].key)
+             console.log(result)
              setIdd(result.results[0].key)
              console.log("moviese path")
 
@@ -187,6 +199,7 @@ console.log(result)
 
 
       console.log(recommendations)
+      console.log(idd,"video idddddddddddd")
          
 
 
@@ -205,7 +218,7 @@ console.log(result)
   return (
     <section className='w-full h-full overflow-y-auto  ' 
     >
-        <div className='w-full h-[600px] bg-gray-600 relative overflow-hidden'>
+        <div className='w-full md:h-[600px] h-auto bg-gray-600 relative overflow-hidden'>
           <div className='absolute top-2 right-2  bg-black z-20 rounded-xl h-auto '>
             <div className='flex py-3 px-3 items-center gap-2 '>
             <FaArrowUp 
@@ -232,8 +245,8 @@ console.log(result)
           </div>
         <img className='w-full h-full absolute inset-0 ' loading='lazy' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt='poster'/>
         <div className='w-full absolute inset-0 h-full bg-gradient-to-tr from-black to-transparent'/>
-        <div className='w-[80%] mx-auto mt-[100px] flex items-center gap-10'>
-          <div className='w-[300px] h-[400px] shrink-0 relative   '>
+        <div className='w-[80%] mx-auto md:mt-[100px] mt-[40px] mb-[20px  ] flex items-center flex-col md:flex-row gap-10'>
+          <div className='md:w-[300px] md:h-[400px] w-[200px] h-[250px] shrink-0 relative   '>
             <img className='w-full h-full rounded-md hover:-translate-y-3 transition-all duration-150' loading='lazy' src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`} />
             <div
             onClick={()=>{
@@ -245,18 +258,18 @@ console.log(result)
             }}
             className='text-black text-center mt-2 poppins cursor-pointer font-semibold text-xl w-full bg-white py-2 rounded-md'>Play</div>
           </div>
-          <div className='bg-[rgba(245,245,245,0.2)] w-fit flex-[0.7] rounded-md flex flex-col gap-4  px-3 py-4 backdrop-blur-[2px] relative text-white '>
-            <h2 className='poppins font-extrabold text-4xl  text-white '>{movie?.title}</h2>
+          <div className='bg-[rgba(245,245,245,0.2)] w-fit flex-[0.7] rounded-md flex flex-col md:gap-4  gap-2 px-3 py-4 backdrop-blur-[2px] relative text-white '>
+            <h2 className='poppins font-extrabold md:text-4xl text-xl  text-white '>{movie?.title}</h2>
             <div>
-              <h4 className='poppins font-normal text-sm mb-2 '>Status : <span>{movie?.status}</span></h4>
-              <p className='poppins font-normal text-sm '>
+              <h4 className='poppins font-normal md:text-sm text-[12px] mb-2 '>Status : <span>{movie?.status}</span></h4>
+              <p className='poppins font-normal md:text-sm  text-[10px]'>
                 {movie?.overview}
               </p>
             </div>
             <div className='flex items-center gap-2'>
               {
                movie && movie?.genres?.slice(0,4).map((ele,ind)=>{
-                  return <button key={ele.id} className={`border-[2px] border-white text-black ${ind ===0 ? "bg-white/70" :""} px-4 py-1 rounded-xl`}>
+                  return <button key={ele.id} className={`md:border-[2px] border-[1px] border-white text-black ${ind ===0 ? "bg-white/70" :""} md:px-4 md:py-1 px-2 py-[3px] rounded-xl`}>
                     {ele.name}
                   </button>
                 })
@@ -281,6 +294,9 @@ console.log(result)
             <div className='w-[80%] mx-auto h-auto grid grid-cols-[repeat(auto-fit,120px)] place-items-center gap-5 '>
               {
                 isCast ? 
+   
+                 castt?.cast?.length > 2 ? 
+
                     castt?.cast?.slice(0,16).map((ele,inx)=>{
                          return(
                           ele.profile_path && <div>
@@ -290,10 +306,13 @@ console.log(result)
                            </div>
                           
                          )
-                    })
+                    }) : <p className='poppines text-bold dark:text-white text-black'> No data Avalable</p>
                 
                 
                 :
+
+                castt?.crew?.length > 2 ?
+
                 castt?.crew?.slice(0,22).map((ele,inx)=>{
                   return(
                    ele.profile_path && <div>
@@ -303,7 +322,7 @@ console.log(result)
                     </div>
                    
                   )
-             })
+             }) : <p className='poppines text-bold dark:text-white text-black'> No data Avalable</p>
                 
               }
                
@@ -314,12 +333,12 @@ console.log(result)
 
             
                 {
-                  similar.length > 2 && <LatestRelease movies={similar} title={"Similar Movies"} background={true}/>
+                  <LatestRelease loading={loading} movies={similar} title={"Similar Movies"} background={true}/>
 
                 }
 
                 {
-                   recommendations.length > 2 &&  <LatestRelease movies={recommendations} title={"Recommended Movies"} background={true}/>
+                   recommendations.length > 2 &&  <LatestRelease loading={loading} movies={recommendations} title={"Recommended Movies"} background={true}/>
 
                 }
               

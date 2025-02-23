@@ -6,5 +6,6 @@ import { SingleCard } from "./SingleCard";
 import VideoPlayer from "./VideoPlayer";
 import ProtectedRoute from "./ProtectedRoute";
 import LoginGoogle from "./GoogleLogin";
+import LoadingSkeleton from "./LoadingSkeleton";
 
-export {Header ,Sidebar,SliderMovies,LatestRelease,SingleCard ,VideoPlayer ,ProtectedRoute ,LoginGoogle}
+export {Header ,Sidebar,SliderMovies,LatestRelease,SingleCard ,VideoPlayer ,ProtectedRoute ,LoginGoogle,LoadingSkeleton}

@@ -34,33 +34,33 @@ const Sidebar = () => {
         <div className='w-full flex md:flex-col items-center h-full  rounded-md '>
         <Link
         to="/"
-        className='px-[3px] py-[10px]   border-b-[1px] border-gray-600 w-full '>
-                <HiHome className='md:text-3xl text-xl dark:text-white text-gray-700  mx-auto'/>
+        className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
+                <HiHome className='md:text-2xl text-xl md:dark:text-white text-gray-700    mx-auto'/>
             </Link>
 
-            <Link className='px-[3px] py-[10px]   border-b-[1px] border-gray-600 w-full '>
-                <SiFireship className='md:text-3xl text-xl dark:text-white text-gray-700  mx-auto'/>
+            <Link className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
+                <SiFireship className='md:text-2xl text-xl md:dark:text-white text-gray-700  mx-auto'/>
             </Link>
 
            {user && <Link   
               to="/liked"
-                className='px-[3px] py-[10px]   border-b-[1px] border-gray-600 w-full '>
-                <BsChatLeftHeartFill className='md:text-3xl text-xl dark:text-white text-gray-700   mx-auto'/>
+                className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
+                <BsChatLeftHeartFill className='md:text-2xl text-xl md:dark:text-white text-gray-700   mx-auto'/>
             </Link>}
 
            {user && <Link
             to="/watchLater"
-            className='px-[3px] py-[10px]   border-b-[1px] border-gray-600 w-full '>
-                <MdWatchLater className='md:text-3xl text-xl dark:text-white text-gray-700  mx-auto'/>
+            className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
+                <MdWatchLater className='md:text-2xl text-xl md:dark:text-white text-gray-700  mx-auto'/>
             </Link>}
-            <Link to={"/latest/trending"} className='px-[3px] py-[10px]   border-b-[1px] border-gray-600 w-full '>
-                <MdExplore  className='md:text-3xl text-xl dark:text-white text-gray-700   mx-auto'/>
+            <Link to={"/latest/trending"} className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
+                <MdExplore  className='md:text-2xl text-xl md:dark:text-white text-gray-700   mx-auto'/>
             </Link>
             {
               user &&  <button 
               onClick={handleLogout}
-              className='px-[3px] py-[10px]   border-b-[1px] border-gray-600 w-full '>
-                <IoLogOutSharp  className='md:text-3xl text-xl dark:text-white text-gray-700   mx-auto'/>
+              className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
+                <IoLogOutSharp  className='md:text-2xl text-xl md:dark:text-white text-gray-700   mx-auto'/>
             </button>
 
             }
@@ -71,31 +71,31 @@ const Sidebar = () => {
         <div className='absolute hidden z-10 group-hover:flex  transition-all duration-700 w-auto  px-[12px] left-[100%] h-full  flex-col items-cente bg-gradient-to-r from-black via-black/60 to-black/15 '>
         <Link
         to="/"
-        className='px-[3px] py-[13px]  text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
+        className='px-[3px] py-[10px]  text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
                 Home
             </Link>
           
-            <Link  className='px-[3px] py-[13px]  text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
+            <Link  className='px-[3px] py-[10px]  text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
                 Trending
             </Link>
            {user && <Link 
             to="/liked"
-            className='px-[3px] py-[13px]  text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
+            className='px-[3px] py-[10px]  text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
                 Favourite
             </Link>}
            {user && <Link 
             to="/watchLater"
-            className='px-[3px] py-[13px] text-nowrap text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
+            className='px-[3px] py-[10px] text-nowrap text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
                Watch Later
             </Link>  }
             <Link to="/latest/trending" 
-            className='px-[3px] py-[13px]  text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
+            className='px-[3px] py-[10px]  text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
               Gallery
             </Link>
             {
               user &&  <button 
               onClick={handleLogout}
-              className='px-[3px] py-[13px] text-left text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
+              className='px-[3px] py-[10px] text-left text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
                 LogOut
             </button>
 

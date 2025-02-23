@@ -4,7 +4,7 @@ import { FaBookmark } from "react-icons/fa6";
 import { FaRegBookmark } from "react-icons/fa6";
 import { FaHeart } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { SingleCard } from '../components';
+import { LoadingSkeleton, SingleCard } from '../components';
 // import { useParams } from 'react-router-dom'
 
 const Tranding = () => {
@@ -41,6 +41,8 @@ const Tranding = () => {
             const response = await fetch(url, options)
             const data = await response.json()
             console.log(data.results)
+            const timer = await  new Promise((r)=>setTimeout(()=>r("Promise resolve"),2000))
+
             setData(data.results)
             totalPageNoRef.current = data.total_pages // Save totalPageNo in useRef
             setLoading(false)
@@ -77,6 +79,9 @@ const Tranding = () => {
             setLoading(false)
         } catch (error) {
             console.log('error', error)
+            setLoading(false)
+        }finally{
+            setLoading(false)
         }
     }
 
@@ -128,13 +133,13 @@ const Tranding = () => {
         <div
             ref={container}
             className='p-2 w-full h-full overflow-x-scroll py-4'>
-            <div className='flex justify-center items-center gap-3 py-4'>
+            <div className='flex flex-wrap dark:bg-black bg-white w-full justify-center items-center md:gap-3 gap-1 py-4 md:relative fixed md:top-0 top-[60px] left-[50%] transform translate-x-[-50%] z-10 '>
             <h2
             onClick={()=>{
                 setPageNo(1)
                 setGenera(null)
             }}
-            className={`poppins font-bold  cursor-pointer text-center ${genera ===null  ? "dark:bg-white/20  bg-black/50  rounded-2xl px-3 py-2":""}  dark:text-white text-gray-800 px-3 py-4 `}>Explore</h2>
+            className={`poppins md:font-bold font-semibold   cursor-pointer text-center ${genera ===null  ? "dark:bg-white/20  bg-black/50  md:rounded-xl rounded-sm md:px-3 md:py-2":""}  dark:text-white text-gray-800 md:px-3 md:py-2  px-2 py-1`}>Explore</h2>
             <h2
             onClick={()=>{
                 setPageNo(1)
@@ -165,10 +170,15 @@ const Tranding = () => {
 
 
             </div>
-            <div className='w-fit mx-auto gap-5 h-full grid grid-cols-5 mb-5'>
+            <div className='w-fit mx-auto md:gap-5 gap-9 h-full grid lg:grid-cols-5 md:top-0 relative top-[90px]   sm:grid-cols-3 grid-cols-1 mb-5'>
                 {data.map((ele, index) => (
                     <SingleCard ele={ele} key={index}/>
                 ))}
+                {
+                    loading && [1,2,3,4,5,6].map((_,ind)=>{
+                        return <LoadingSkeleton key={ind}/>
+                    })
+                }
             </div>
         </div>
     )
