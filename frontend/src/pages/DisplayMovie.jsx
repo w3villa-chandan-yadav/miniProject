@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { LatestRelease, LoadingSkeleton, VideoPlayer } from '../components';
 import { FaArrowUp } from "react-icons/fa";
@@ -26,6 +26,7 @@ const DisplayMovie = () => {
     const [castt,setCast] = useState([])
     const [videoPlayer,setVideoPlayer] = useState(false);
     const [loading,setLoading] = useState(true)
+    const mainref = useRef()
 
     const [isCast ,setIsCrew] = useState(true)
   const [idd,setIdd] = useState()
@@ -219,10 +220,16 @@ const options = {
       fetchRecomendation()
       fetchCast()
       findVideos()
+
+      if(mainref.current){
+        mainref.current.scrollTop =0
+      }
+
     },[id])
 
   return (
     <section className='w-full h-full overflow-y-auto  ' 
+    ref={mainref}
     >
         <div className='w-full md:h-[600px] h-auto bg-gray-600 relative overflow-hidden'>
           <div className='absolute top-2 right-2  bg-black z-20 rounded-xl h-auto '>
