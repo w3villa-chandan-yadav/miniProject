@@ -12,9 +12,9 @@ const LatestRelease = ({movies,loading,title,show=false,setSearchBy,background=f
     const {watchLater ,favourt}  = useSelector((state)=>state.movie)
     const dispatch = useDispatch()
 
-    console.log(watchLater , favourt)
+    // console.log(watchLater , favourt)
 
-    console.log(movies)
+    // console.log(movies)
 
     
 

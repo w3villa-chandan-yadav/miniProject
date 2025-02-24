@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { LatestRelease, VideoPlayer } from '../components';
+import { LatestRelease, LoadingSkeleton, VideoPlayer } from '../components';
 import { FaArrowUp } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa";
 import { toast } from 'react-toastify';
@@ -23,7 +23,7 @@ const DisplayMovie = () => {
 
     const [isCast ,setIsCrew] = useState(true)
   const [idd,setIdd] = useState()
-    console.log(id,type)
+    // console.log(id,type)
 
     const fetchData = async()=>{
 
@@ -49,7 +49,7 @@ const options = {
 
        const result = await data.json();
 
-       console.log(result)
+      //  console.log(result)
        setMovies(result)
 
     }
@@ -85,8 +85,8 @@ const options = {
           setSimilar([])  
           setLoading(false)
         }else{
-          console.log('something')
-          console.log(data)
+          // console.log('something')
+          // console.log(data)
           setSimilar(data.results)
           setLoading(false)
         }
@@ -123,12 +123,12 @@ const options = {
 
       const result = await data.json() ;
 
-      console.log(result)
+      // console.log(result)
 
       if(result.status_code ===34){
         setRecommendations([])  
       }else{
-        console.log('something')
+        // console.log('something')
         setRecommendations(result.results)
       }
 
@@ -148,18 +148,18 @@ const options = {
      const data = await fetch(url, options)
 
      const result = await data.json();
-console.log(result)
+// console.log(result)
      setCast(result)
 
         } catch (error) {
-          console.log("error in fetching cast")
+          // console.log("error in fetching cast")
         }
       }
 
 
 
       const findVideos = async()=>{
-        console.log("in find video")
+        // console.log("in find video")
         try {
           
           // let url = 'https://api.themoviedb.org/3/movie/2344343/videos?language=en-US';
@@ -188,18 +188,18 @@ console.log(result)
 
              const result = await data.json();
 
-             console.log(result)
+            //  console.log(result)
              setIdd(result.results[0].key)
-             console.log("moviese path")
+            //  console.log("moviese path")
 
         } catch (error) {
-          console.log("error in video fetching")
+          // console.log("error in video fetching")
         }
       }
 
 
-      console.log(recommendations)
-      console.log(idd,"video idddddddddddd")
+      // console.log(recommendations)
+      // console.log(idd,"video idddddddddddd")
          
 
 
@@ -333,11 +333,15 @@ console.log(result)
 
             
                 {
-                  <LatestRelease loading={loading} movies={similar} title={"Similar Movies"} background={true}/>
+                 loading ?   <LoadingSkeleton/> :
+
+                   similar.length > 2 && <LatestRelease  movies={similar} title={"Similar Movies"} background={true}/>
 
                 }
 
                 {
+
+                  loading ?  <div className=' mt-3'><LoadingSkeleton/> </div> :
                    recommendations.length > 2 &&  <LatestRelease loading={loading} movies={recommendations} title={"Recommended Movies"} background={true}/>
 
                 }

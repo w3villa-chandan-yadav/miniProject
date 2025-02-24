@@ -32,7 +32,7 @@ function App() {
   return (
     <div className='dark:bg-black bg-gray-400 relative'>
      {
-      loading &&  <div className='w-full h-full overflow-hidden  absolute inset-0 z-50'>
+      loading &&  <div className='w-full h-full overflow-hidden  absolute inset-0 z-50 object-cover'>
       <img className='w-full h-full ' src={imageLoading} />
 
     </div>

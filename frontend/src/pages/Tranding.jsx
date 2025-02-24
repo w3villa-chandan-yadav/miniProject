@@ -13,12 +13,13 @@ const Tranding = () => {
     const [data, setData] = useState([])
     const totalPageNoRef = useRef(0) 
     const [loading, setLoading] = useState(false);
+    const [loadingg,setLoadingg] =useState(true)
     const container = useRef()
 
     const [genera,setGenera] = useState(null)
 
     const fetchData = async () => {
-        setLoading(true)
+        setLoadingg(true)
         let url 
         if(genera){
             url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${genera}`;
@@ -40,14 +41,15 @@ const Tranding = () => {
         try {
             const response = await fetch(url, options)
             const data = await response.json()
-            console.log(data.results)
+            // console.log(data.results)
             const timer = await  new Promise((r)=>setTimeout(()=>r("Promise resolve"),2000))
+            setLoadingg(false)
 
             setData(data.results)
             totalPageNoRef.current = data.total_pages // Save totalPageNo in useRef
-            setLoading(false)
         } catch (error) {
             console.log('error', error)
+            setLoadingg(false)
         }
     }
 
@@ -171,6 +173,11 @@ const Tranding = () => {
 
             </div>
             <div className='w-fit mx-auto md:gap-5 gap-9 h-full grid lg:grid-cols-5 md:top-0 relative top-[90px]   sm:grid-cols-3 grid-cols-1 mb-5'>
+                {
+                    loadingg && [1,2,3,4,5,6].map((_,ind)=>{
+                        return <LoadingSkeleton key={ind}/>
+                    })
+                }
                 {data.map((ele, index) => (
                     <SingleCard ele={ele} key={index}/>
                 ))}

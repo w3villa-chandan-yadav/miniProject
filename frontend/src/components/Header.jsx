@@ -41,7 +41,7 @@ const Header = () => {
 
       const data = await result.json();
 
-      console.log(data)
+      // console.log(data)
 
       setSearchingData(data.results)
         
@@ -59,7 +59,7 @@ const Header = () => {
       //   console.log("press enterd")
       //  return
       // }
-      console.log(e.target.value )
+      // console.log(e.target.value )
       if(e.target.value.trim() ===""){
         setSearchingData([])
       }

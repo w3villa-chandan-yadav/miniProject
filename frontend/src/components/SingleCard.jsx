@@ -24,7 +24,7 @@ export const SingleCard = ({ele}) => {
         }
 
         const handleAddfavourt =(e,movi)=>{
-            console.log("handle add favourt")
+            // console.log("handle add favourt")
             e.preventDefault()
                 e.stopPropagation()
                 if(!user){

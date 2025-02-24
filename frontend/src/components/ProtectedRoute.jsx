@@ -7,7 +7,7 @@ const ProtectedRoute = ({children}) => {
 
     const {user} = useSelector((state)=>state.user)
 
-    console.log("inside")
+    // console.log("inside")
 
 
     useEffect(()=>{
