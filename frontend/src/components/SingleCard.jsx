@@ -21,6 +21,8 @@ export const SingleCard = ({ele}) => {
                 return
             }
             dispatch(addWachLater(movi))
+            toast.success("Done")
+
         }
 
         const handleAddfavourt =(e,movi)=>{
@@ -32,6 +34,7 @@ export const SingleCard = ({ele}) => {
                     return
                 }
                 dispatch(addFavourt(movi))
+                toast.success("Done")
         }
         // console.log(ele)
   return (

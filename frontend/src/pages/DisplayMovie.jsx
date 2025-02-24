@@ -255,7 +255,7 @@ const options = {
         <div className='w-full absolute inset-0 h-full bg-gradient-to-tr from-black to-transparent'/>
         <div className='w-[80%] mx-auto md:mt-[100px] mt-[40px] mb-[20px  ] flex items-center flex-col md:flex-row gap-10'>
           <div className='md:w-[300px] md:h-[400px] w-[200px] h-[250px] shrink-0 relative   '>
-            <img className='w-full h-full rounded-md hover:-translate-y-3 transition-all duration-150' loading='lazy' src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`} />
+            <img className='w-full h-full rounded-md hover:-translate-y-3 transition-all duration-150' loading='lazy' src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`} />
             <div
             onClick={()=>{
               if(!user){
@@ -299,7 +299,7 @@ const options = {
 
             </div>
             
-            <div className='w-[80%] mx-auto h-auto flex items-center flex-wrap '>
+            <div className='w-[80%] mx-auto h-auto flex items-center flex-wrap gap-5'>
               {
                 isCast ? 
    
@@ -308,7 +308,7 @@ const options = {
                     castt?.cast?.slice(0,16).map((ele,inx)=>{
                          return(
                           ele.profile_path && <div className='mx-auto'>
-                              <img src={`https://image.tmdb.org/t/p/original/${ele?.profile_path}`} className='w-[100px] h-[100px] object-cover rounded-full' />
+                              <img src={`https://image.tmdb.org/t/p/w92/${ele?.profile_path}`} className='w-[100px] h-[100px] object-cover rounded-full' />
                           <p className='text-nowrap text-center dark:text-white'>{ele.name.length > 13 ? ele.name.substr(0,12) : ele.name}</p>    
                           <p className='text-center dark:text-white'>{ele.known_for_department}</p>
                            </div>
