@@ -4,13 +4,19 @@ import { LatestRelease, LoadingSkeleton, VideoPlayer } from '../components';
 import { FaArrowUp } from "react-icons/fa";
 import { FaArrowDown } from "react-icons/fa";
 import { toast } from 'react-toastify';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addPopular,removePopular } from '../redux/slices/moviesSlice';
 
 
 
 const DisplayMovie = () => {
 
+  const dispach = useDispatch()
+
     const {user} = useSelector(state=>state.user)
+    const {populars} = useSelector((state)=>state.movie)
+
+    console.log(populars)
 
     const  {type,id} = useParams();
 
@@ -49,7 +55,7 @@ const options = {
 
        const result = await data.json();
 
-      //  console.log(result)
+       console.log(result)
        setMovies(result)
 
     }
@@ -76,7 +82,7 @@ const options = {
 
         const result = await fetch(url, options);
         const data = await result.json();
-        // console.log(data)
+        console.log(data) 
 
         const timer = await new Promise((r)=>setTimeout(()=>r("promise resolve"),2000))
 
@@ -123,7 +129,7 @@ const options = {
 
       const result = await data.json() ;
 
-      // console.log(result)
+      console.log(result.results)
 
       if(result.status_code ===34){
         setRecommendations([])  
@@ -227,6 +233,7 @@ const options = {
                 toast.error("Please login")
                 return
               }
+              dispach(addPopular({...movie,media_type:type,votes:1}))
               toast.success("voted +")
             }}
             className='text-white cursor-pointer hover:animate-bounce'/>
@@ -236,6 +243,7 @@ const options = {
                 toast.error("Please login")
                 return
               }
+              dispach(removePopular(movie))
               toast.success("voted -")
             }}
             className='text-white cursor-pointer hover:animate-bounce'/>
@@ -258,7 +266,7 @@ const options = {
             }}
             className='text-black text-center mt-2 poppins cursor-pointer font-semibold text-xl w-full bg-white py-2 rounded-md'>Play</div>
           </div>
-          <div className='bg-[rgba(245,245,245,0.2)] w-fit flex-[0.7] rounded-md flex flex-col md:gap-4  gap-2 px-3 py-4 backdrop-blur-[2px] relative text-white '>
+          <div className='bg-[rgba(245,245,245,0.2)] w-fit flex-[0.7] rounded-md flex flex-col md:gap-4  gap-2 px-3 py-4 backdrop-blur-[2px] relative text-white md:mb-0 mb-7 '>
             <h2 className='poppins font-extrabold md:text-4xl text-xl  text-white '>{movie?.title}</h2>
             <div>
               <h4 className='poppins font-normal md:text-sm text-[12px] mb-2 '>Status : <span>{movie?.status}</span></h4>
@@ -269,7 +277,7 @@ const options = {
             <div className='flex items-center gap-2'>
               {
                movie && movie?.genres?.slice(0,4).map((ele,ind)=>{
-                  return <button key={ele.id} className={`md:border-[2px] border-[1px] border-white text-black ${ind ===0 ? "bg-white/70" :""} md:px-4 md:py-1 px-2 py-[3px] rounded-xl`}>
+                  return <button key={ele.id} className={`md:border-[2px] border-[1px] border-white text-black bg-white/70 md:px-4 md:py-1 px-2 py-[3px] rounded-xl`}>
                     {ele.name}
                   </button>
                 })
@@ -291,7 +299,7 @@ const options = {
 
             </div>
             
-            <div className='w-[80%] mx-auto h-auto grid grid-cols-[repeat(auto-fit,120px)] place-items-center gap-5 '>
+            <div className='w-[80%] mx-auto h-auto flex items-center flex-wrap '>
               {
                 isCast ? 
    
@@ -299,7 +307,7 @@ const options = {
 
                     castt?.cast?.slice(0,16).map((ele,inx)=>{
                          return(
-                          ele.profile_path && <div>
+                          ele.profile_path && <div className='mx-auto'>
                               <img src={`https://image.tmdb.org/t/p/original/${ele?.profile_path}`} className='w-[100px] h-[100px] object-cover rounded-full' />
                           <p className='text-nowrap text-center dark:text-white'>{ele.name.length > 13 ? ele.name.substr(0,12) : ele.name}</p>    
                           <p className='text-center dark:text-white'>{ele.known_for_department}</p>
@@ -340,8 +348,6 @@ const options = {
                 }
 
                 {
-
-                  loading ?  <div className=' mt-3'><LoadingSkeleton/> </div> :
                    recommendations.length > 2 &&  <LatestRelease loading={loading} movies={recommendations} title={"Recommended Movies"} background={true}/>
 
                 }

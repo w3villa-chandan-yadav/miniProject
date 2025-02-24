@@ -33,19 +33,23 @@ export const SingleCard = ({ele}) => {
                 }
                 dispatch(addFavourt(movi))
         }
+        // console.log(ele)
   return (
     <Link 
     to={ele.media_type === "tv" ? `/details/tv/${ele.id}` :`/details/movie/${ele.id}`}
-    className='lg:w-[210px] md:w-[180px]  w-[170px] relative shrink-0 lg:h-[370px] md:h-[320px]  h-[300px] group rounded-md overflow-hidden dark:bg-[rgba(255,255,255,0.8)] bg-[rgba(0,0,0,0.7)] dark:text-black text-white backdrop-blur-[2px]'>
+    className='lg:w-[210px] md:w-[180px]  w-[170px] relative shrink-0 lg:h-[370px] md:h-[300px]  h-[290px] group rounded-md overflow-hidden dark:bg-[rgba(255,255,255,0.8)] bg-[rgba(0,0,0,0.5)] dark:text-black text-white backdrop-blur-[2px]'>
         <FaPlay className='absolute top-[50%] left-[50%] z-20 -translate-x-1/2 -translate-y-1/2 text-3xl text-white hidden group-hover:block cursor-pointer '/>
         <FaHeart 
         onClick={(e)=>handleAddfavourt(e,ele)}
         className={`absolute top-[10px] right-[10px] z-20 text-2xl ${favourt.some((content)=> content.id === ele.id) ? "text-red-500" :"text-white" }  cursor-pointer `}/>
-    <img className='w-full lg:h-[320px] md:h-[260px] h-[230px] group-hover:scale-95 transition-all duration-200 ' loading='lazy'  src={`https://image.tmdb.org/t/p/original/${ele?.poster_path}`}/>
+    <img className='w-full lg:h-[310px] md:h-[250px] h-[235px] group-hover:scale-95 transition-all duration-200 ' loading='lazy'  src={`https://image.tmdb.org/t/p/w185/${ele?.poster_path}`}/>
         <div className='flex justify-between items-center mx-2'>
+
+   
+
           { ele.media_type != "tv" ?
-        <h4 className='poppins font-bold ml-1 text-sm'>{ele?.original_title?.length < 20 ? ele?.original_title : `${ele?.original_title?.substr(0,19)}...`}</h4> :
-        <h4 className='poppins font-bold ml-1 text-sm'>{ele?.original_name?.length < 13 ? ele?.original_name : `${ele?.original_name?.substr(0,12)}...`}</h4>
+        <h4 className='poppins font-bold ml-1 text-sm'>{ele?.original_title?.length < 13 ?  ele?.name ?? ele?.original_title : `${ ele?.name?.substr(0,12) ?? ele?.original_title?.substr(0,13)}...`}</h4> :
+        <h4 className='poppins font-bold ml-1 text-sm'>{ele?.original_name?.length < 13 ?   ele?.original_name : `${ele?.original_name?.substr(0,13)}...`}</h4>
 }
             <div 
             onClick={(e)=>handleWatchLater(e,ele)}

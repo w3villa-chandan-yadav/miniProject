@@ -27,7 +27,7 @@ const data =  await fetch(url,options) ;
 
 const result = await data.json()
 
-const time =await new Promise((r)=>setTimeout(()=>r("promise resolve"),4000))
+// const time =await new Promise((r)=>setTimeout(()=>r("promise resolve"),4000))
 
 setSerial(result.results)
 setLoading(false)

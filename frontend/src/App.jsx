@@ -4,7 +4,7 @@ import imageLoading from "./assets/loading.gif"
 
 import './App.css'
 import { Header, ProtectedRoute } from './components';
-import { DisplayMovie, Favourite, Homepage, Login, Lostpage, MovieContainer, SignIn, Tranding, WatchLater } from './pages';
+import { DisplayMovie, Favourite, Homepage, Login, Lostpage, MovieContainer, PopularsNow, SignIn, Tranding, WatchLater } from './pages';
 
 
 
@@ -47,6 +47,7 @@ function App() {
     <Route  index element={<MovieContainer/>} />
     <Route  path='/details/:type/:id' element={<DisplayMovie/>}/>
     <Route path='/latest/trending' element={<Tranding/>} />
+    <Route path='/popular' element={<PopularsNow/>}/>
     <Route path='/watchLater' element={<ProtectedRoute><WatchLater/></ProtectedRoute>}/>
     <Route path='/liked' element={<ProtectedRoute><Favourite/> </ProtectedRoute>}/>
     </Route>

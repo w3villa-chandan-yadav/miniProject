@@ -38,7 +38,9 @@ const Sidebar = () => {
                 <HiHome className='md:text-2xl text-xl md:dark:text-white text-gray-700    mx-auto'/>
             </Link>
 
-            <Link className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
+            <Link 
+            to="/popular"
+            className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
                 <SiFireship className='md:text-2xl text-xl md:dark:text-white text-gray-700  mx-auto'/>
             </Link>
 
