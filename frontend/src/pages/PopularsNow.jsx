@@ -27,7 +27,7 @@ function PopularsNow() {
   return (
     <div className="container mx-auto w-full h-full overflow-x-auto p-4">
       <h1 className="text-2xl font-bold mb-6">Voting Cards</h1>
-      <div className='w-fit mx-auto md:gap-5 gap-9 h-full grid lg:grid-cols-5 md:top-0 relative top-[90px]   sm:grid-cols-3 grid-cols-1 mb-5'>
+      <div className='w-full flex flex-wrap gap-4 justify-center'>
           {cards.map((card,ind) => 
           (
            
