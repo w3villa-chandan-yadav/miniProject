@@ -5,9 +5,14 @@ import { MdWatchLater } from "react-icons/md";
 import { Link, useNavigate } from 'react-router-dom';
 import { MdExplore } from "react-icons/md";
 import { HiHome } from "react-icons/hi";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { IoLogOutSharp } from "react-icons/io5";
 import { toast } from 'react-toastify';
+import {signOut} from "firebase/auth"
+import { auth } from './firebase';
+import { MdOutlineLanguage } from "react-icons/md";
+import { useTranslation } from 'react-i18next';
+import { addLanguage } from '../redux/slices/moviesSlice';
 
 
 
@@ -17,6 +22,11 @@ import { toast } from 'react-toastify';
 
 
 const Sidebar = () => {
+
+     const {t} =  useTranslation()
+     const dispatch = useDispatch()
+    //  const {language} = useSelector((state)=>state.movie)
+
     const navigate = useNavigate()
 
     const {user} = useSelector((state)=>state.user)
@@ -24,6 +34,7 @@ const Sidebar = () => {
     const handleLogout =()=>{
         toast.success("Logout")
         localStorage.clear();
+        signOut(auth) 
         window.location.reload()
         
     }
@@ -58,6 +69,14 @@ const Sidebar = () => {
             <Link to={"/latest/trending"} className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
                 <MdExplore  className='md:text-2xl text-xl md:dark:text-white text-gray-700   mx-auto'/>
             </Link>
+
+            <div 
+            onClick={()=>dispatch(addLanguage(true))}
+            className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
+                <MdOutlineLanguage  className='md:text-2xl text-xl md:dark:text-white text-gray-700   mx-auto'/>
+            </div>
+           
+            
             {
               user &&  <button 
               onClick={handleLogout}
@@ -70,40 +89,44 @@ const Sidebar = () => {
 
         </div>
 
-        <div className='absolute hidden z-10 group-hover:flex  transition-all duration-700 w-auto  px-[12px] left-[100%] h-full  flex-col items-cente bg-gradient-to-r from-black via-black/60 to-black/15 '>
+        <div className='absolute hidden z-10 group-hover:flex  transition-all duration-700 w-[110px]  px-[12px] left-[100%] h-full  flex-col items-cente bg-gradient-to-r from-black via-black/60 to-black/15 '>
         <Link
         to="/"
-        className='px-[3px] py-[10px]  text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
-                Home
+        className='px-[3px] py-[10px]  text-center text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
+                {t("home")}
             </Link>
           
-            <Link  className='px-[3px] py-[10px]  text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
-                Trending
+            <Link  className='px-[3px] py-[10px]  text-center text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
+            {t("Trending")}
             </Link>
            {user && <Link 
             to="/liked"
-            className='px-[3px] py-[10px]  text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
-                Favourite
+            className='px-[3px] py-[10px] text-center  text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
+                {t("Favorite")}
             </Link>}
            {user && <Link 
             to="/watchLater"
-            className='px-[3px] py-[10px] text-nowrap text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
-               Watch Later
+            className='px-[3px] py-[10px] text-center text-nowrap text-white poppins font-semibold border-b-[1px] border-gray-200 w-full '>
+               {t("WatchLater")}
             </Link>  }
             <Link to="/latest/trending" 
-            className='px-[3px] py-[10px]  text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
-              Gallery
+            className='px-[3px] py-[10px]  text-center text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
+              {t("Gallery")}
             </Link>
+            <div  
+            className='px-[3px] py-[10px] text-center  text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
+              {t("Language")}
+            </div>
             {
               user &&  <button 
               onClick={handleLogout}
-              className='px-[3px] py-[10px] text-left text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
+              className='px-[3px] py-[10px]  text-center text-white poppins font-semibold border-b-[1px] border-gray-600 w-full '>
                 LogOut
             </button>
 
             }
         </div>
-
+      
 
     </div>
   )

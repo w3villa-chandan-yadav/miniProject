@@ -1,15 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { LatestRelease, LoadingSkeleton, VideoPlayer } from '../components';
-import { FaArrowUp } from "react-icons/fa";
-import { FaArrowDown } from "react-icons/fa";
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { addPopular,removePopular } from '../redux/slices/moviesSlice';
+import { IoIosThumbsUp } from "react-icons/io";
+import { IoIosThumbsDown } from "react-icons/io";
+import { useTranslation } from 'react-i18next';
+
+
 
 
 
 const DisplayMovie = () => {
+  const {t,i18n} = useTranslation()
 
   const dispach = useDispatch()
 
@@ -19,6 +23,7 @@ const DisplayMovie = () => {
     console.log(populars)
 
     const  {type,id} = useParams();
+    const {currentLanguage} = useSelector((state)=>state.movie)
 
     const [movie ,setMovies] = useState("");
     const [similar ,setSimilar] = useState([])
@@ -30,17 +35,17 @@ const DisplayMovie = () => {
 
     const [isCast ,setIsCrew] = useState(true)
   const [idd,setIdd] = useState()
-    // console.log(id,type)
+   
 
     const fetchData = async()=>{
-
+        
       let url 
 
       if(type ==="tv"){
-       url = `https://api.themoviedb.org/3/tv/${id}?language=en-US`;
+       url = `https://api.themoviedb.org/3/tv/${id}?language=${i18n.language}-US`;
 
       }else{
-      url =  `https://api.themoviedb.org/3/movie/${id}?language=en-US`;
+      url =  `https://api.themoviedb.org/3/movie/${id}?language=${i18n.language}-US`;
 
       }
       
@@ -66,11 +71,11 @@ const options = {
            try {
             let url 
             if(type ==="tv"){
-            url =  `https://api.themoviedb.org/3/tv/${id}/similar?language=en-US&page=1`
+            url =  `https://api.themoviedb.org/3/tv/${id}/similar?language=${i18n.language}-US&page=1`
        
              }else{
        
-               url = `https://api.themoviedb.org/3/movie/${id}/similar?language=en-US&page=1`
+               url = `https://api.themoviedb.org/3/movie/${id}/similar?language=${i18n.language}-US&page=1`
              }
             
             const options = {
@@ -92,8 +97,6 @@ const options = {
           setSimilar([])  
           setLoading(false)
         }else{
-          // console.log('something')
-          // console.log(data)
           setSimilar(data.results)
           setLoading(false)
         }
@@ -112,10 +115,10 @@ const options = {
         let url 
 
         if(type ==="tv"){
-           url = `https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US&page=1`;
+           url = `https://api.themoviedb.org/3/movie/${id}/recommendations?language=${i18n.language}-US&page=1`;
           
         }else{
-           url =  `https://api.themoviedb.org/3/tv/${id}/recommendations?language=en-US&page=1`
+           url =  `https://api.themoviedb.org/3/tv/${id}/recommendations?language=${i18n.language}-US&page=1`
      
            }
         const options = {
@@ -225,16 +228,18 @@ const options = {
         mainref.current.scrollTop =0
       }
 
-    },[id])
+    },[id,currentLanguage])
 
   return (
     <section className='w-full h-full overflow-y-auto  ' 
     ref={mainref}
     >
         <div className='w-full md:h-[600px] h-auto bg-gray-600 relative overflow-hidden'>
-          <div className='absolute top-2 right-2  bg-black z-20 rounded-xl h-auto '>
+        <div className='w-full h-full dark:bg-linear-[25deg,black_5%,black_25%,transparent_50%,transparent]  bg-linear-[25deg,white_5%,white_25%,transparent_50%,transparent] absolute inset-0 z-[1]' />
+
+          <div className='absolute top-2 right-2  dark:bg-black bg-white z-20 rounded-xl h-auto '>
             <div className='flex py-3 px-3 items-center gap-2 '>
-            <FaArrowUp 
+            <IoIosThumbsUp 
             onClick={()=>{
               if(!user){
                 toast.error("Please login")
@@ -243,8 +248,8 @@ const options = {
               dispach(addPopular({...movie,media_type:type,votes:1}))
               toast.success("voted +")
             }}
-            className='text-white cursor-pointer hover:animate-bounce'/>
-            <FaArrowDown
+            className='dark:text-white  text-black md:text-xl cursor-pointer hover:animate-spin'/>
+            <IoIosThumbsDown
             onClick={()=>{
               if(!user){
                 toast.error("Please login")
@@ -253,16 +258,15 @@ const options = {
               dispach(removePopular(movie))
               toast.success("voted -")
             }}
-            className='text-white cursor-pointer hover:animate-bounce'/>
+            className='dark:text-white  text-black md:text-xl cursor-pointer hover:animate-spin'/>
             </div>
-            <h4 className='text-white text-center text-xs'>VOTE</h4>
            
           </div>
         <img className='w-full h-full absolute inset-0 ' loading='lazy' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt='poster'/>
-        <div className='w-full absolute inset-0 h-full bg-gradient-to-tr from-black to-transparent'/>
-        <div className='w-[80%] mx-auto md:mt-[100px] mt-[40px] mb-[20px  ] flex items-center flex-col md:flex-row gap-10'>
-          <div className='md:w-[300px] md:h-[400px] w-[200px] h-[250px] shrink-0 relative   '>
-            <img className='w-full h-full rounded-md hover:-translate-y-3 transition-all duration-150' loading='lazy' src={`https://image.tmdb.org/t/p/w500/${movie?.poster_path}`} />
+        <div className='w-full absolute inset-0 h-full bg-gradient-to-tr  from-black  to-transparent'/>
+        <div className='w-[80%] mx-auto md:mt-[100px] mt-[40px] mb-[20px ]  flex items-center flex-col md:flex-row gap-10 '>
+          <div className='md:w-[300px] md:h-[400px] w-[200px] h-[250px]  relative  z-[3] '>
+            <img className='w-full h-full rounded-md hover:-translate-y-3 transition-all duration-150' loading='lazy' src={`https://image.tmdb.org/t/p/w342/${movie?.poster_path}`} />
             <div
             onClick={()=>{
               if(!user){
@@ -271,7 +275,7 @@ const options = {
               }
               setVideoPlayer(true)
             }}
-            className='text-black text-center mt-2 poppins cursor-pointer font-semibold text-xl w-full bg-white py-2 rounded-md'>Play</div>
+            className='dark:text-black text-white dark:bg-white bg-black text-center mt-2 poppins cursor-pointer font-semibold text-xl w-full  py-2 rounded-md'>Play</div>
           </div>
           <div className='bg-[rgba(245,245,245,0.2)] w-fit flex-[0.7] rounded-md flex flex-col md:gap-4  gap-2 px-3 py-4 backdrop-blur-[2px] relative text-white md:mb-0 mb-7 '>
             <h2 className='poppins font-extrabold md:text-4xl text-xl  text-white '>{movie?.title}</h2>
@@ -299,10 +303,10 @@ const options = {
             <div className='text-center poppins text-xl  mb-10 text-white font-bold flex justify-center gap-8'>
               <p 
               onClick={()=>setIsCrew(true)}
-              className='bg-black/70 cursor-pointer px-5 py-2 w-fit rounded-2xl'>CAST</p>
+              className='bg-black/70 dark:bg-white/30 cursor-pointer px-5 py-2 w-fit rounded-2xl'>CAST</p>
               <p
               onClick={()=>setIsCrew(false)}
-              className='bg-black/70 cursor-pointer px-5 py-2 w-fit rounded-2xl'>CREW</p>
+              className='bg-black/70 dark:bg-white/30 cursor-pointer px-5 py-2 w-fit rounded-2xl'>CREW</p>
 
             </div>
             
@@ -350,12 +354,12 @@ const options = {
                 {
                  loading ?   <LoadingSkeleton/> :
 
-                   similar.length > 2 && <LatestRelease  movies={similar} title={"Similar Movies"} background={true}/>
+                   similar.length > 2 && <LatestRelease  movies={similar} title={t("Similar")} background={true}/>
 
                 }
 
                 {
-                   recommendations.length > 2 &&  <LatestRelease loading={loading} movies={recommendations} title={"Recommended Movies"} background={true}/>
+                   recommendations.length > 2 &&  <LatestRelease loading={loading} movies={recommendations} title={t("Recommended")} background={true}/>
 
                 }
               

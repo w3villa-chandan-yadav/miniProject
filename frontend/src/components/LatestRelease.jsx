@@ -11,10 +11,10 @@ const LatestRelease = ({movies,loading,title,show=false,setSearchBy,background=f
 
     const {watchLater ,favourt}  = useSelector((state)=>state.movie)
     const dispatch = useDispatch()
-
+    
     // console.log(watchLater , favourt)
 
-    // console.log(movies)
+    console.log(movies)
 
     
 
@@ -22,7 +22,7 @@ const LatestRelease = ({movies,loading,title,show=false,setSearchBy,background=f
    
   
   return (
-    <section className={`w-[93vw]  bg-cover bg-center bg-fixed  overflow-hidden h-full mx-auto py-5`}>
+    <section className={`w-[93vw]  bg-cover bg-center bg-fixed  overflow-hidden h-full mx-auto py-4`}>
          {
               show ?   <div className='my-2'>
                 
@@ -57,7 +57,7 @@ const LatestRelease = ({movies,loading,title,show=false,setSearchBy,background=f
 
  loading ?  [1,2,3,4,5].map((_,index)=><LoadingSkeleton key={index}/>) :
 
-    movies.slice(10,20).map((ele,ind)=>{
+    movies.slice(0,10).map((ele,ind)=>{
         return(
 //             
           <SingleCard key={ind} ele={ele}/>

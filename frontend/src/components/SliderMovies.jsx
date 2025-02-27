@@ -5,13 +5,15 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import { Pagination ,Autoplay} from 'swiper/modules';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const SliderMovies = ({movies}) => {
 
    
 
   return (
-        <div className='lg:h-full md:h-[500px] h-[350px]  max-h-[1200px] w-full absolute inset-0  '>
+        <div className='lg:h-full md:h-[500px] h-[300px]  max-h-[1200px] w-full absolute inset-0  '>
         <Swiper
         spaceBetween={30}
         pagination={{
@@ -45,11 +47,21 @@ export default SliderMovies
 
 
 const Slide =({movie})=>{
+  const {t} = useTranslation()
+  const navigate = useNavigate()
+
+
+  const handleNavigate=()=>{
+    console.log("navigatiion in swiper")
+    navigate(movie.media_type === "tv" ? `/details/tv/${movie.id}` :`/details/movie/${movie.id}`)
+  }
 
 
     return(
-        <div className='w-full lg:h-full  md:h-[500px] h-[350px] max-h-[1200px] relative'>
-          <div className='w-full h-full bg-radial-[at_50%_55%] from-transparent  via-black/30 to-black/60 to-30%" inset-0 z-[2] absolute'/>
+        <div className='w-full lg:h-full  md:h-[500px] h-[300px] max-h-[1200px] relative'>
+          {/* <div className='w-full h-full bg-radial-[at_50%_55%] from-transparent  via-black/30 to-black/60 to-30%" inset-0 z-[2] absolute'/> */}
+          <div className='w-full h-full dark:bg-linear-[25deg,black_5%,black_25%,transparent_50%,transparent]  bg-linear-[25deg,white_5%,white_25%,transparent_50%,transparent] absolute inset-0 z-[2]' />
+
 
           
             <img className='absolute inset-0' loading='lazy' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}/>
@@ -62,8 +74,12 @@ const Slide =({movie})=>{
                 <h3 className='poppins text-left md:text-sm text-[9px] text-white mb-2'>Rating :<span className='md:text-xs  text-[9px]'> {movie?.vote_average.toFixed(1)+"+"}</span></h3>
                 </div>
                 <div className='w-full flex justify-start gap-4 h-auto'>
-                    <button className='bg-white md:px-3 md:py-3 rounded-sm md:text-sm px-2 py-2 text-[11px] font-semibold text-black  poppins'>
-                        Watch Now
+                    <button 
+                    onClick={(e)=>handleNavigate(e)}
+                    className='bg-white md:px-3 md:py-3 rounded-sm md:text-sm px-2 py-2 text-[11px] font-semibold text-black  poppins'>
+                        {
+                          t("WatchNow")
+                        }
                     </button>
 
                     

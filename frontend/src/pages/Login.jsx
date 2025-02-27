@@ -2,10 +2,14 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react';
 import { auth } from '../components/firebase';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { LoginGoogle } from '../components';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../redux/slices/useSlice';
 
 const Login = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -67,13 +71,19 @@ const Login = () => {
 
     try {
         
-       await createUserWithEmailAndPassword(auth,formData.email,formData.password);
+       const user = await createUserWithEmailAndPassword(auth,formData.email,formData.password);
        console.log('step 1')
 
-       const user = auth.currentUser ;
+      //  const user = auth.currentUser ;
 
-       console.log(user)
+       console.log(user.user)
        console.log("user register succcessfuly")
+       dispatch(addUser(user.user))
+       localStorage.setItem("user",JSON.stringify(user.user)) ;
+
+       navigate('/')
+       
+       
 
     } catch (error) {
         toast.error(error.message)

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../components/firebase';
+import {collection,addDoc} from "firebase/firestore"
+import { auth ,db} from '../components/firebase';
 import {toast} from "react-toastify"
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser } from '../redux/slices/useSlice';
@@ -35,6 +36,7 @@ const SignIn = () => {
 
 
         dispatch(addUser(user.user))
+       
 
         localStorage.setItem("user",JSON.stringify(user.user)) ;
         navigate("/")

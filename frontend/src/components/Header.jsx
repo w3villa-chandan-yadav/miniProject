@@ -99,12 +99,12 @@ const Header = () => {
 
 
   return (
-    <div className='w-screen h-[60px] max-w-[1900px] dark:border-amber-50 border-b-[1px] mx-auto py-1'>
+    <div className='w-screen h-[60px] max-w-[1900px] dark:bg-gray-800 bg-blue-600  mx-auto py-1'>
         <div className='w-full px-2  rounded-md mx-auto h-full flex justify-between items-center'>
             <div className='h-full   flex items-center gap-2'>
                 <img 
                 onClick={()=>navigate("/")}
-                src={logoImage} className='  rounded-full cursor-pointer h-full'/>
+                src={logoImage} className='  rounded-full cursor-pointer md:h-full h-[30px]'/>
             </div>
             
             <div className='flex items-center  gap-3 justify-end flex-1'>
@@ -122,7 +122,7 @@ const Header = () => {
               </div>
               
                 <div 
-                className=' w-fit h-full gap-2   relative md:py-2 py-1  border-[1px] rounded-md  md:rounded-2xl dark:border-amber-50 md:px-3  px-1  flex items-center justify-between'
+                className=' w-fit h-full gap-2   relative md:py-2 py-1  border-[1px] rounded-md  md:rounded-xl dark:border-amber-50 md:px-3  px-1  flex items-center justify-between'
                 >   
                  
                     <input 
@@ -167,7 +167,7 @@ const Header = () => {
                   alt='userIcom'/> :
                   <Link
                   to="signIn"
-                  className='dark:bg-black bg-gray-200 dark:text-white text-gray-700 px-3  poppins font-semibold py-2 rounded-xl cursor-pointer'>Login</Link>
+                  className='dark:bg-gray-900 bg-gray-200 dark:text-white text-gray-700 px-3  poppins font-semibold py-2 rounded-xl cursor-pointer'>Login</Link>
                  }
                 </div>
             </div>

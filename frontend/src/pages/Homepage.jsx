@@ -12,9 +12,11 @@ const Homepage = () => {
        
 
         {/* main outelt */}
-        <div className='w-full  flex-1 relative '>
+        <div className='w-full  flex-1 relative  md:pb-0 pb-10'>
             <Outlet/>
         </div>
+
+        
     
     </div>
   )

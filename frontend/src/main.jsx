@@ -6,7 +6,7 @@ import {BrowserRouter} from "react-router-dom"
 import {Provider} from "react-redux"
 import { store } from './redux/store.jsx'
 import {ToastContainer} from "react-toastify"
-
+import "./i18n.js"
 createRoot(document.getElementById('root')).render(
   <StrictMode>  
     <BrowserRouter>

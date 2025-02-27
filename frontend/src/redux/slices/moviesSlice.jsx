@@ -4,6 +4,8 @@ const initialState ={
     watchLater :localStorage.getItem("movie") ? JSON.parse(localStorage.getItem("movie")) : [],
     favourt :localStorage.getItem("favourt") ? JSON.parse(localStorage.getItem("favourt")) : [],
     populars : localStorage.getItem("popular") ? JSON.parse(localStorage.getItem("popular")) :[] ,
+    language : false,
+    currentLanguage : "en",
 }
 
 const movieSlice = createSlice({
@@ -18,6 +20,18 @@ const movieSlice = createSlice({
             state.watchLater.push(action.payload)
             localStorage.setItem("movie",JSON.stringify(state.watchLater))
            }
+        },
+        addCurrentLanguage:(state,action)=>{
+           state.currentLanguage = action.payload
+        },
+
+        addFirstWatchLater:(state,action)=>{
+          state.watchLater =action.payload
+          localStorage.setItem("movie",JSON.stringify(state.watchLater))
+        },
+        addFirstFavouret:(state,action)=>{
+          state.watchLater =action.payload
+          localStorage.setItem("favourt",JSON.stringify(state.watchLater))
         },
         addFavourt:(state,action)=>{
             if(state.favourt.some((ele)=> ele.id === action.payload.id)){
@@ -51,13 +65,18 @@ const movieSlice = createSlice({
                   }
                 }
               });
+         }},
+         addLanguage:(state,action)=>{
 
-         }}
+          state.language = action.payload
+
+         }
+
 
     }
 })
 
 
-export const { addFavourt ,addWachLater,addPopular,removePopular} = movieSlice.actions;
+export const { addFavourt ,addWachLater,addPopular,removePopular,addFirstWatchLater ,addLanguage,addCurrentLanguage} = movieSlice.actions;
 
 export default movieSlice.reducer
