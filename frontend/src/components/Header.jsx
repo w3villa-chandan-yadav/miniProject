@@ -11,7 +11,7 @@ import { MdDarkMode } from "react-icons/md";
 let timerId
 
 const Header = () => {
-  const [mode,setMode] = useState("black");
+  const [mode,setMode] = useState("dark");
 
   const navigate = useNavigate()
   const {user} = useSelector((state)=>state.user)

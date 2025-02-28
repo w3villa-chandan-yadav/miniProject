@@ -55,20 +55,27 @@ function App() {
     </div>
      }
     {
-      language &&  <div className='absolute w-full inset-0 h-full grid place-items-center backdrop-blur-[3px] bg-[rgba(245,245,245,0.5)] z-50'>
-                 <div className='bg-black flex justify-between items-center gap-2 flex-col rounded-2xl relative h-auto w-[200px]'>
-                 <h2 className='absolute right-2 text-white top-1 text-xl'
-                 onClick={()=>dispatch(addLanguage(false))}
-                 ><IoCloseSharp/></h2>
-                   {
-                    Language.map((ele)=>{
-                     return <h3 
-                     onClick={()=>changeLangugae(ele.code)}
-                     className='text-center  text-white cursor-pointer hover:bg-green-400/20 w-full h-full  py-1.5'>{ele.lang}</h3>
-                    })
-                   }
-                 </div>
+      language &&  <div className="absolute w-full inset-0 h-full grid place-items-center backdrop-blur-[3px] bg-[rgba(245,245,245,0.5)] z-50">
+      <div className="bg-gray-300 flex flex-col justify-start items-center gap-4 p-4 rounded-2xl shadow-lg relative h-auto w-[280px] max-w-full">
+        <h2 
+          className="absolute top-2 right-2 text-white text-2xl cursor-pointer hover:text-red-500 transition duration-200"
+          onClick={() => dispatch(addLanguage(false))}
+        >
+          <IoCloseSharp  className='text-red-400'/>
+        </h2>
+        <h3 className="text-2xl font-semibold text-center text-gray-800 mb-4">Select Language</h3>
+        {Language.map((ele) => (
+          <h3
+            key={ele.code}
+            onClick={() => changeLangugae(ele.code)}
+            className="text-center text-gray-800 cursor-pointer py-2 px-4 w-full rounded-md hover:bg-green-500/40 transition duration-300"
+          >
+            {ele.lang}
+          </h3>
+        ))}
       </div>
+    </div>
+    
     }
    <div className='w-screen h-auto overflow-x-hidden dark:bg-black bg-white max-w-[1950px] mx-auto' >
     <Header/>

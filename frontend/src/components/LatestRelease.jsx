@@ -22,7 +22,7 @@ const LatestRelease = ({movies,loading,title,show=false,setSearchBy,background=f
    
   
   return (
-    <section className={`w-[93vw]  bg-cover bg-center bg-fixed  overflow-hidden h-full mx-auto py-4`}>
+    <section className={`w-[93vw] overflow-hidden    h-full mx-auto py-4`}>
          {
               show ?   <div className='my-2'>
                 
@@ -51,7 +51,7 @@ const LatestRelease = ({movies,loading,title,show=false,setSearchBy,background=f
          }
 
 
-        <div className='w-full md:ml-2 flex gap-4 flex-nowrap overflow-x-auto continaer'>
+        <div className='w-full md:ml-2 flex gap-4 flex-nowrap overflow-x-auto py-4 continaer'>
 
 {
 

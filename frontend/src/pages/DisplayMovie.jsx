@@ -7,6 +7,8 @@ import { addPopular,removePopular } from '../redux/slices/moviesSlice';
 import { IoIosThumbsUp } from "react-icons/io";
 import { IoIosThumbsDown } from "react-icons/io";
 import { useTranslation } from 'react-i18next';
+import { FaPlay } from "react-icons/fa";
+
 
 
 
@@ -146,7 +148,14 @@ const options = {
 
       const fetchCast =async()=>{
         try {
-          const url = `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`;
+          let url 
+          if(type ==="tv"){
+            url = `https://api.themoviedb.org/3/tv/${id}/credits?language=en-US`;
+            
+          }else{  
+               url = `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`;
+               }
+
         const options = {
           method: 'GET',
           headers: {
@@ -234,9 +243,12 @@ const options = {
     <section className='w-full h-full overflow-y-auto  ' 
     ref={mainref}
     >
-        <div className='w-full md:h-[600px] h-auto bg-gray-600 relative overflow-hidden'>
-        <div className='w-full h-full dark:bg-linear-[25deg,black_5%,black_25%,transparent_50%,transparent]  bg-linear-[25deg,white_5%,white_25%,transparent_50%,transparent] absolute inset-0 z-[1]' />
-
+        <div className='w-full md:h-[600px] py-5 flex justify-center items-center flex-col gap-5   h-auto bg-gray-600 relative overflow-hidden'>
+        {/* <div className='w-full h-full dark:bg-linear-[25deg,black_5%,black_25%,transparent_50%,transparent]  absolute inset-0 z-[1]' /> */}
+        <div
+  className="w-full h-full absolute inset-0 z-[1]"
+  style={{background: "radial-gradient(circle, transparent 0%, transparent 25%, rgba(0,0,0,0.3) 50%, black 100%)"}}
+/>
           <div className='absolute top-2 right-2  dark:bg-black bg-white z-20 rounded-xl h-auto '>
             <div className='flex py-3 px-3 items-center gap-2 '>
             <IoIosThumbsUp 
@@ -248,7 +260,7 @@ const options = {
               dispach(addPopular({...movie,media_type:type,votes:1}))
               toast.success("voted +")
             }}
-            className='dark:text-white  text-black md:text-xl cursor-pointer hover:animate-spin'/>
+            className='dark:text-white    text-black md:text-xl cursor-pointer hover:animate-spin'/>
             <IoIosThumbsDown
             onClick={()=>{
               if(!user){
@@ -263,11 +275,35 @@ const options = {
            
           </div>
         <img className='w-full h-full absolute inset-0 ' loading='lazy' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt='poster'/>
-        <div className='w-full absolute inset-0 h-full bg-gradient-to-tr  from-black  to-transparent'/>
-        <div className='w-[80%] mx-auto md:mt-[100px] mt-[40px] mb-[20px ]  flex items-center flex-col md:flex-row gap-10 '>
-          <div className='md:w-[300px] md:h-[400px] w-[200px] h-[250px]  relative  z-[3] '>
+        {/* <div className='w-full absolute inset-0 h-full bg-gradient-to-tr  from-black  to-transparent'/> */}
+        <h2 className='anton font-extrabold md:text-4xl text-xl  text-white z-10 relative text-center '>{movie?.title}</h2>
+        <div className='relative mx-auto   z-40'>
+        <div className='flex justify-center md:flex-row felx-col gap-3 flex-wrap '>
+          <div className='md:w-[300px] md:h-[370px] w-[200px] hidden md:block  h-[230px]  relative  '>
             <img className='w-full h-full rounded-md hover:-translate-y-3 transition-all duration-150' loading='lazy' src={`https://image.tmdb.org/t/p/w342/${movie?.poster_path}`} />
-            <div
+            
+          </div>
+          <div className='bg-[rgba(245,245,245,0.2)] w-fit lg:flex-[0.5] flex-[0.6] h-auto rounded-md flex flex-col justify-center  md:gap-4  gap-2 px-3 py-4 backdrop-blur-[2px] relative text-white md:mb-0 mb-7 '>
+            {/* <h2 className='poppins font-extrabold md:text-4xl text-xl  text-white '>{movie?.title}</h2> */}
+            <div className='flex items-center gap-2'>
+              {
+               movie && movie?.genres?.slice(0,4).map((ele,ind)=>{
+                  return <button key={ind} className='px-3 text-white cursor-pointer  font-bold rounded-2xl py-2 bg-violet-950 poppins md:text-[12px] text-[9px]'>
+                  {ele?.name}
+             </button>
+                })
+              }
+            </div>
+            <div>
+              <h4 className='poppins font-bold md:text-sm text-[12px] mb-2 '>Status : <span>{movie?.status}</span></h4>
+              <p className='poppins font-semibold  md:text-sm  text-[10px]'>
+                {movie?.overview}
+              </p>
+            </div>
+            
+          </div>
+          </div>
+          <div
             onClick={()=>{
               if(!user){
                 toast.error("Please login")
@@ -275,27 +311,9 @@ const options = {
               }
               setVideoPlayer(true)
             }}
-            className='dark:text-black text-white dark:bg-white bg-black text-center mt-2 poppins cursor-pointer font-semibold text-xl w-full  py-2 rounded-md'>Play</div>
-          </div>
-          <div className='bg-[rgba(245,245,245,0.2)] w-fit flex-[0.7] rounded-md flex flex-col md:gap-4  gap-2 px-3 py-4 backdrop-blur-[2px] relative text-white md:mb-0 mb-7 '>
-            <h2 className='poppins font-extrabold md:text-4xl text-xl  text-white '>{movie?.title}</h2>
-            <div>
-              <h4 className='poppins font-normal md:text-sm text-[12px] mb-2 '>Status : <span>{movie?.status}</span></h4>
-              <p className='poppins font-normal md:text-sm  text-[10px]'>
-                {movie?.overview}
-              </p>
-            </div>
-            <div className='flex items-center gap-2'>
-              {
-               movie && movie?.genres?.slice(0,4).map((ele,ind)=>{
-                  return <button key={ele.id} className={`md:border-[2px] border-[1px] border-white text-black bg-white/70 md:px-4 md:py-1 px-2 py-[3px] rounded-xl`}>
-                    {ele.name}
-                  </button>
-                })
-              }
-            </div>
-          </div>
+            className='dark:text-black mx-auto text-white dark:bg-white bg-black text-center mt-2 poppins cursor-pointer font-semibold text-xl w-[50%] flex justify-center items-center gap-2  py-2 rounded-md'><FaPlay/>Play</div>
         </div>
+        
 
         </div>
         <div className='w-full h-auto py-10 bg-transparent'>

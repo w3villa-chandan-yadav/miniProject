@@ -22,7 +22,7 @@ getfavouretLater()
      <div className='w-fit mx-auto gap-5 h-full grid lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2  grid-cols-1 pt-5 mb-5'>
       {
                   favourt .length < 1 &&  
-                  <Link to="/" className='px-4 py-2 h-9 self-center   dark:bg-gray-300/60 bg-gray-500/40 rounded-2xl'>Please Add Some thing
+                  <Link to="/" className='px-4 py-2 h-9 self-center  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] dark:bg-gray-300/60 bg-gray-500/40 rounded-2xl'>Please Add Some thing
                   </Link>
                 } 
                   {favourt.map((ele, index) => (

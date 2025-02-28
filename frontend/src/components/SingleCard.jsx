@@ -85,16 +85,20 @@ export const SingleCard = ({ele}) => {
                 
                 toast.success("Done")
         }
- 
+        // dark:bg-[rgba(255,255,255,0.8)] bg-[rgba(0,0,0,0.5)]
   return (
     <Link 
     to={ele?.first_air_date ? `/details/tv/${ele.id}` :`/details/movie/${ele.id}`}
-    className='lg:w-[200px] truncate md:w-[190px]  w-[150px] relative shrink-0 lg:h-[340px] md:h-[300px]  h-[240px] group rounded-md overflow-hidden dark:bg-[rgba(255,255,255,0.8)] bg-[rgba(0,0,0,0.5)] dark:text-black text-white backdrop-blur-[2px]'>
+    className='lg:w-[200px]  md:w-[190px]  w-[150px] relative shrink-0 shadow-md dark:shadow-sm dark:shadow-white shadow-black lg:h-[340px] md:h-[300px]  h-[240px] group rounded-md  dark:text-black text-white '>
         <FaPlay className='absolute top-[50%] left-[50%] z-20 -translate-x-1/2 -translate-y-1/2 text-3xl text-white hidden group-hover:block cursor-pointer '/>
+        <div className='absolute bottom-[15%] flex justify-center items-center -right-6 z-20 h-[30px] w-[30px] rounded-full bg-yellow-600 -translate-x-1/2 -translate-y-1/2  text-white text-[11px] font-bold poppins '>
+        <p>{ele?.vote_average.toFixed(1)}</p>
+        </div>
+       
         <FaHeart 
         onClick={(e)=>handleAddfavourt(e,ele)}
         className={`absolute top-[10px] right-[10px] z-20 text-2xl ${favourt.some((content)=> content.id === ele.id) ? "text-red-500" :"text-white" }  cursor-pointer `}/>
-    <img className='w-full lg:h-[285px] md:h-[250px] h-[185px] group-hover:scale-95 transition-all duration-200 ' loading='lazy'  src={`https://image.tmdb.org/t/p/w185/${ele?.poster_path}`}/>
+    <img className='w-full lg:h-[285px] md:h-[250px] rounded-md h-[185px] group-hover:scale-95 transition-all duration-200 ' loading='lazy'  src={`https://image.tmdb.org/t/p/w185/${ele?.poster_path}`}/>
         <div className='flex justify-between items-center truncate mx-2'>
 
    
@@ -102,20 +106,20 @@ export const SingleCard = ({ele}) => {
         
 
           { ele.first_air_date ? 
-        <h4 className='poppins font-bold ml-1 md:text-sm text-[13px]'>{ele?.original_name?.length < 13 ?  ele?.name ?? ele?.original_name : `${ele?.name?.substr(0,13) ?? ele?.original_name?.substr(0,13)}...`}</h4>:
-        <h4 className='poppins font-bold ml-1 md:text-sm text-[13px]'>{ele?.title?.length < 13 ?  ele?.name ?? ele?.title : `${ ele?.title?.substr(0,12) ?? ele?.title?.substr(0,13)}...`}</h4> 
+        <h4 className='poppins dark:text-white text-black font-bold ml-1 md:text-sm text-[13px]'>{ele?.original_name?.length < 13 ?  ele?.name ?? ele?.original_name : `${ele?.name?.substr(0,13) ?? ele?.original_name?.substr(0,13)}...`}</h4>:
+        <h4 className='poppins dark:text-white text-black font-bold ml-1 md:text-sm text-[13px]'>{ele?.title?.length < 13 ?  ele?.name ?? ele?.title : `${ ele?.title?.substr(0,12) ?? ele?.title?.substr(0,13)}...`}</h4> 
 }
             <div 
             onClick={(e)=>handleWatchLater(e,ele)}
-            className='cursor-pointer'>
+            className='cursor-pointer dark:text-white text-black'>
                   {
                      watchLater.some((content)=>content.id === ele.id) ?   <FaBookmark/> : <FaRegBookmark/>
                   } 
             </div>
         </div>
         <div className='mx-3 mt-2 poppins   flex justify-between items-center  gap-1font-semibold md:text-xs md:text-[10px] text-[9px] '>
-           <span className='text-nowrap '> {t("Rating")} <span>{ele?.vote_average}</span></span>
-           <span className='md:text-[9px] text-[9px] text-nowrap'>{ele.media_type !="tv" ? ele?.release_date : ele?.first_air_date}</span>
+           {/* <span className='text-nowrap '> {t("Rating")} <span>{ele?.vote_average}</span></span> */}
+           <span className='md:text-[11px] dark:text-white text-black text-[10px] font-bold text-nowrap'>{ele.media_type !="tv" ? ele?.release_date : ele?.first_air_date}</span>
         </div>  
     </Link> 
   )

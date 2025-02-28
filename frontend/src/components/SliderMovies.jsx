@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide} from 'swiper/react';
+import { FaPlay } from "react-icons/fa";
+import { IoMdDownload } from "react-icons/io";
+import { FaRegHeart } from "react-icons/fa";
+
+
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -58,28 +63,53 @@ const Slide =({movie})=>{
 
 
     return(
-        <div className='w-full lg:h-full  md:h-[500px] h-[300px] max-h-[1200px] relative'>
-          {/* <div className='w-full h-full bg-radial-[at_50%_55%] from-transparent  via-black/30 to-black/60 to-30%" inset-0 z-[2] absolute'/> */}
-          <div className='w-full h-full dark:bg-linear-[25deg,black_5%,black_25%,transparent_50%,transparent]  bg-linear-[25deg,white_5%,white_25%,transparent_50%,transparent] absolute inset-0 z-[2]' />
-
+        <div className='w-full lg:h-full md:pr-[10%]  pr-[20px] flex justify-end items-center md:h-[500px] h-[300px] max-h-[1200px] relative'>
+          <div className="w-full h-full bg-gradient-to-l from-black via-5%  via-black to-transparent absolute inset-0 z-[2]" />
 
           
             <img className='absolute inset-0' loading='lazy' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}/>
-            <div className='bg-[rgba(0,0,0,0.4)] px-4 md:py-7 py-3 backdrop-blur-[2px] z-[4]  md:w-[490px] w-[230px] h-auto absolute bottom-[9%] left-[3%] rounded-2xl'>
-                <h2 className='text-left poppins md:text-3xl text-base md:ml-2 font-semibold md:font-bold text-white '>{movie.title}</h2>
-                <p className='text-left poppins md:text-sm text-[10px] md:mt-4 mt-2 mb-1 text-white '>
+            <div className=' px-4 md:py-7 py-3 flex justify-center gap-2 flex-col z-[4]  md:w-[490px] w-[230px] h-auto  '>
+                <h2 className='text-right anton md:text-3xl text-base md:ml-2 font-semibold md:font-bold text-white '>{movie.title}</h2>
+            <div className='flex items-center justify-end gap-4'>
+                  <button className='px-3 text-white cursor-pointer  font-bold rounded-2xl py-2 bg-violet-950 poppins md:text-[12px] text-[9px]'>
+                       Advanture
+                  </button>
+                  <button className='px-3 text-white cursor-pointer  font-bold rounded-2xl py-2 bg-violet-950 poppins md:text-[12px] text-[9px]'>
+                       FANTASY
+                  </button>
+                  <button className='px-3 text-white cursor-pointer  font-bold rounded-2xl py-2 bg-violet-950 poppins md:text-[12px] text-[9px]'>
+                       ACTION
+                  </button>
+                </div>
+                <p className='text-right poppins md:text-sm font-semibold text-[10px] md:mt-4  text-white '>
                         {movie.overview}
                 </p>
-                <div>
-                <h3 className='poppins text-left md:text-sm text-[9px] text-white mb-2'>Rating :<span className='md:text-xs  text-[9px]'> {movie?.vote_average.toFixed(1)+"+"}</span></h3>
+                <div className='text-white flex justify-end items-center gap-2 font-extrabold '>
+                   <FaRegHeart className='font-extrabold text-green-500 text-2xl'/> <div>
+                   <p> {movie?.vote_average.toFixed(1)*10 +"%"}</p>
+                    <p className='text-[10px]'>Liked this</p>
+                    </div>
                 </div>
-                <div className='w-full flex justify-start gap-4 h-auto'>
+                
+                <div>
+                {/* <h3 className='poppins text-left md:text-sm text-[9px] text-white '>Rating :<span className='md:text-xs  text-[9px]'> {movie?.vote_average.toFixed(1)+"+"}</span></h3> */}
+                </div>
+                <div className='w-full flex justify-end gap-4 h-auto'>
                     <button 
                     onClick={(e)=>handleNavigate(e)}
-                    className='bg-white md:px-3 md:py-3 rounded-sm md:text-sm px-2 py-2 text-[11px] font-semibold text-black  poppins'>
+                    className='bg-gray-600  text-nowrap md:px-3 md:py-2 rounded-2xl flex items-center gap-2 md:text-sm px-2 py-2 text-[11px] font-semibold text-white  poppins'>
                         {
                           t("WatchNow")
                         }
+                        <FaPlay/>
+                    </button>
+                    <button 
+                    onClick={(e)=>handleNavigate(e)}
+                    className='bg-white text-nowrap md:px-3 md:py-2 rounded-2xl flex items-center gap-2 md:text-sm px-2 py-2 text-[11px] font-semibold text-black  poppins'>
+                        {
+                          t("WatchNow")
+                        }
+                        <IoMdDownload/>
                     </button>
 
                     

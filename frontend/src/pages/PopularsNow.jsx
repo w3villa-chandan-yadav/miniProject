@@ -25,13 +25,17 @@ function PopularsNow() {
   },[populars])
 
   return (
-    <div className="container mx-auto w-full h-full overflow-x-auto p-4">
-      <h1 className="text-2xl font-bold mb-6">Voting Cards</h1>
+    <div className="w-full h-full overflow-x-auto p-4">
+      <h1 className="'text-center text-xl poppins font-bold dark:text-white text-black'">Live Treanding</h1>
       <div className='w-full flex flex-wrap gap-4 justify-center'>
           {cards.map((card,ind) => 
           (
-           
-                <SingleCard  ele={card} />
+           <div
+           className="    className='lg:w-[200px]  md:w-[190px]  w-[150px] relative shrink-0 shadow-md dark:shadow-sm dark:shadow-white shadow-black lg:h-[340px] md:h-[300px]  h-[240px] group rounded-md  dark:text-black text-white '>"
+           >
+            <h2 className="dark:text-white text-black anton text-2xl absolute z-20 -top-3 -left-1">{ind+1}</h2>
+             <SingleCard  ele={card} />
+            </div>
                
         ))}
       </div>

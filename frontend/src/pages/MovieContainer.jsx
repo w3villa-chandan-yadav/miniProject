@@ -76,10 +76,10 @@ useEffect(()=>{
 
 useEffect(()=>{
   fetchSeries()
-},[])
+},[currentLanguage])
   return (
     <div className=' h-full  overflow-y-auto  continaer'>  
-     <div className=' relative w-full  h-[300px] lg:h-[100%] md:h-[500px] max-h-[1200px]  p-[9px] '>
+     <div className=' relative w-full  h-[300px] lg:h-[120%] md:h-[500px] max-h-[1200px]  p-[9px] '>
             <SliderMovies movies={movies}/>
      </div>
      <div className='w-full h-auto '>
