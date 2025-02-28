@@ -5,6 +5,8 @@ import imagess from "../assets/icon.webp"
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { MdDarkMode } from "react-icons/md";
+import { FiSun } from "react-icons/fi";
+
 
 
 
@@ -99,7 +101,7 @@ const Header = () => {
 
 
   return (
-    <div className='w-screen h-[60px] max-w-[1900px] dark:bg-gray-800 bg-blue-600  mx-auto py-1'>
+    <div className='w-screen h-[60px] max-w-[1900px] dark:bg-gray-800 bg-gray-300  mx-auto py-1'>
         <div className='w-full px-2  rounded-md mx-auto h-full flex justify-between items-center'>
             <div className='h-full   flex items-center gap-2'>
                 <img 
@@ -118,11 +120,11 @@ const Header = () => {
                 }
               })} 
               >
-                {mode ==="dark" ? <MdDarkMode className='text-white text-3xl'/> : <MdDarkMode className='text-black text-3xl'/>}
+                {mode ==="dark" ? <FiSun className='text-white text-3xl'/> : <MdDarkMode className='text-white text-3xl'/>}
               </div>
               
                 <div 
-                className=' w-fit h-full gap-2   relative md:py-2 py-1  border-[1px] rounded-md  md:rounded-xl dark:border-amber-50 md:px-3  px-1  flex items-center justify-between'
+                className=' w-fit h-full gap-2   relative md:py-2 py-1  border-[1px] rounded-md  md:rounded-xl border-gray-600 md:px-3  px-1  flex items-center justify-between'
                 >   
                  
                     <input 
@@ -158,7 +160,7 @@ const Header = () => {
                           }
                     </div>
                       }
-                    <FaSearch className='text-gray-500'/>
+                    <FaSearch className='text-gray-600'/>
                 </div>
                 <div className='shrink-0'>
                  {

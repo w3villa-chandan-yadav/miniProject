@@ -249,8 +249,9 @@ const options = {
   className="w-full h-full absolute inset-0 z-[1]"
   style={{background: "radial-gradient(circle, transparent 0%, transparent 25%, rgba(0,0,0,0.3) 50%, black 100%)"}}
 />
-          <div className='absolute top-2 right-2  dark:bg-black bg-white z-20 rounded-xl h-auto '>
+          <div className='absolute top-[4%] right-[6%]   z-20 rounded-xl h-auto  '>
             <div className='flex py-3 px-3 items-center gap-2 '>
+              <div className='bg-gray-500/40 md:p-3 p-2 rounded-full backdrop-blur-[2px] cursor-pointer'>
             <IoIosThumbsUp 
             onClick={()=>{
               if(!user){
@@ -260,7 +261,9 @@ const options = {
               dispach(addPopular({...movie,media_type:type,votes:1}))
               toast.success("voted +")
             }}
-            className='dark:text-white    text-black md:text-xl cursor-pointer hover:animate-spin'/>
+            className='text-white  md:text-xl transition-all duration-150  hover:scale-110 hover:-translate-y-1'/>
+            </div>
+            <div className='bg-gray-500/40 md:p-3 p-2 rounded-full backdrop-blur-[2px] cursor-pointer'>
             <IoIosThumbsDown
             onClick={()=>{
               if(!user){
@@ -270,7 +273,8 @@ const options = {
               dispach(removePopular(movie))
               toast.success("voted -")
             }}
-            className='dark:text-white  text-black md:text-xl cursor-pointer hover:animate-spin'/>
+            className='text-white  md:text-xl  transition-all duration-150 hover:scale-110 hover:translate-y-1  '/>
+            </div>
             </div>
            
           </div>
@@ -283,7 +287,7 @@ const options = {
             <img className='w-full h-full rounded-md hover:-translate-y-3 transition-all duration-150' loading='lazy' src={`https://image.tmdb.org/t/p/w342/${movie?.poster_path}`} />
             
           </div>
-          <div className='bg-[rgba(245,245,245,0.2)] w-fit lg:flex-[0.5] flex-[0.6] h-auto rounded-md flex flex-col justify-center  md:gap-4  gap-2 px-3 py-4 backdrop-blur-[2px] relative text-white md:mb-0 mb-7 '>
+          <div className=' w-fit lg:flex-[0.5] flex-[0.6] h-auto rounded-md flex flex-col justify-center  md:gap-4  gap-2 px-3 py-4 backdrop-blur-[2px] relative text-white md:mb-0 mb-7 '>
             {/* <h2 className='poppins font-extrabold md:text-4xl text-xl  text-white '>{movie?.title}</h2> */}
             <div className='flex items-center gap-2'>
               {
