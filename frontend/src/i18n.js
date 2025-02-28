@@ -22,7 +22,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             Language:"Language",
             LatestRelease:"Latest Release",
             Rating :"Rating",
-            WatchNow:"Watch Now"
+            WatchNow:"Watch Now",
+            Download:"Download"
 
         }
         },
@@ -40,7 +41,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 Language:"भाषा",
                 LatestRelease:"नवीनतम रिलीज़",
                 Rating:"रेटिंग",
-                WatchNow:"अभी देखें"
+                WatchNow:"अभी देखें",
+                Download :"डाउनलोड"
                      }
         },
         fr:{
@@ -57,7 +59,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
                 Language : "Langue",
                 LatestRelease:"Dernière sortie",
                 Rating:"Évaluation",
-                WatchNow:"Regarder maintenant"
+                WatchNow:"Regarder maintenant",
+                Download:"Télécharger"
             }
         },
         es:{
@@ -74,7 +77,8 @@ i18n.use(LanguageDetector).use(initReactI18next).init({
             Language: "Idioma",
             LatestRelease: "Último estreno",
             Rating: "Calificación",
-            WatchNow: "Ver ahora"
+            WatchNow: "Ver ahora",
+            Download:"Descargar"
     }
 }
     }

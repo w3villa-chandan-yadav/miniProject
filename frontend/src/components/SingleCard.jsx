@@ -91,13 +91,13 @@ export const SingleCard = ({ele}) => {
     to={ele?.first_air_date ? `/details/tv/${ele.id}` :`/details/movie/${ele.id}`}
     className='lg:w-[200px]  md:w-[190px]  w-[150px] relative shrink-0 shadow-md dark:shadow-sm dark:shadow-white shadow-black lg:h-[340px] md:h-[300px]  h-[240px] group rounded-md  dark:text-black text-white '>
         <FaPlay className='absolute top-[50%] left-[50%] z-20 -translate-x-1/2 -translate-y-1/2 text-3xl text-white hidden group-hover:block cursor-pointer '/>
-        <div className='absolute bottom-[15%] flex justify-center items-center -right-6 z-20 h-[30px] w-[30px] rounded-full bg-yellow-600 -translate-x-1/2 -translate-y-1/2  text-white text-[11px] font-bold poppins '>
+        <div className='absolute bottom-[15%] flex justify-center items-center -right-6 z-10 h-[30px] w-[30px] rounded-full bg-yellow-600 -translate-x-1/2 -translate-y-1/2  text-white text-[11px] font-bold poppins '>
         <p>{ele?.vote_average.toFixed(1)}</p>
         </div>
        
         <FaHeart 
         onClick={(e)=>handleAddfavourt(e,ele)}
-        className={`absolute top-[10px] right-[10px] z-20 text-2xl ${favourt.some((content)=> content.id === ele.id) ? "text-red-500" :"text-white" }  cursor-pointer `}/>
+        className={`absolute top-[10px] right-[10px] z-10 text-2xl ${favourt.some((content)=> content.id === ele.id) ? "text-red-500" :"text-white" }  cursor-pointer `}/>
     <img className='w-full lg:h-[285px] md:h-[250px] rounded-md h-[185px] group-hover:scale-95 transition-all duration-200 ' loading='lazy'  src={`https://image.tmdb.org/t/p/w185/${ele?.poster_path}`}/>
         <div className='flex justify-between items-center truncate mx-2'>
 

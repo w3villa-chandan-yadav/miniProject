@@ -249,7 +249,7 @@ const options = {
   className="w-full h-full absolute inset-0 z-[1]"
   style={{background: "radial-gradient(circle, transparent 0%, transparent 25%, rgba(0,0,0,0.3) 50%, black 100%)"}}
 />
-          <div className='absolute top-[4%] right-[6%]   z-20 rounded-xl h-auto  '>
+          <div className='absolute md:top-[4%] md:right-[6%]  top-[2%] right-[2%]  z-20 rounded-xl h-auto  '>
             <div className='flex py-3 px-3 items-center gap-2 '>
               <div className='bg-gray-500/40 md:p-3 p-2 rounded-full backdrop-blur-[2px] cursor-pointer'>
             <IoIosThumbsUp 
@@ -315,7 +315,7 @@ const options = {
               }
               setVideoPlayer(true)
             }}
-            className='dark:text-black mx-auto text-white dark:bg-white bg-black text-center mt-2 poppins cursor-pointer font-semibold text-xl w-[50%] flex justify-center items-center gap-2  py-2 rounded-md'><FaPlay/>Play</div>
+            className='dark:text-black mx-auto text-white dark:bg-white bg-black text-center mt-2 poppins cursor-pointer font-semibold text-xl w-[50%] flex justify-center items-center gap-2  md:py-2 py-1  rounded-md'><FaPlay/>Play</div>
         </div>
         
 
@@ -325,10 +325,10 @@ const options = {
             <div className='text-center poppins text-xl  mb-10 text-white font-bold flex justify-center gap-8'>
               <p 
               onClick={()=>setIsCrew(true)}
-              className='bg-black/70 dark:bg-white/30 cursor-pointer px-5 py-2 w-fit rounded-2xl'>CAST</p>
+              className='bg-black/70 dark:bg-white/30 cursor-pointer px-5 py-2 w-fit md:text-lg text-xs rounded-sm md:rounded-2xl'>CAST</p>
               <p
               onClick={()=>setIsCrew(false)}
-              className='bg-black/70 dark:bg-white/30 cursor-pointer px-5 py-2 w-fit rounded-2xl'>CREW</p>
+              className='bg-black/70 dark:bg-white/30 cursor-pointer px-5 py-2 w-fit md:text-lg text-xs rounded-sm md:rounded-2xl'>CREW</p>
 
             </div>
             
@@ -341,9 +341,9 @@ const options = {
                     castt?.cast?.slice(0,16).map((ele,inx)=>{
                          return(
                           ele.profile_path && <div className='mx-auto'>
-                              <img src={`https://image.tmdb.org/t/p/w92/${ele?.profile_path}`} className='w-[100px] h-[100px] object-cover rounded-full' />
-                          <p className='text-nowrap text-center dark:text-white'>{ele.name.length > 13 ? ele.name.substr(0,12) : ele.name}</p>    
-                          <p className='text-center dark:text-white'>{ele.known_for_department}</p>
+                              <img src={`https://image.tmdb.org/t/p/w92/${ele?.profile_path}`} className='md:w-[100px] md:h-[100px] w-[60px] h-[60px] object-cover rounded-full' />
+                          <p className='text-nowrap text-center md:text-sm text-[10px] font-bold dark:text-white'>{ele.name.length > 13 ? ele.name.substr(0,12) : ele.name}</p>    
+                          <p className='text-center dark:text-white  md:text-sm text-[9px]'>{ele.known_for_department}</p>
                            </div>
                           
                          )

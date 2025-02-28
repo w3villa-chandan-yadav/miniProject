@@ -120,7 +120,7 @@ const Header = () => {
                 }
               })} 
               >
-                {mode ==="dark" ? <FiSun className='text-white text-3xl'/> : <MdDarkMode className='text-white text-3xl'/>}
+                {mode ==="dark" ? <FiSun className='text-white text-xl md:text-3xl'/> : <MdDarkMode className='text-white text-xl md:text-3xl'/>}
               </div>
               
                 <div 
@@ -169,7 +169,7 @@ const Header = () => {
                   alt='userIcom'/> :
                   <Link
                   to="signIn"
-                  className='dark:bg-gray-900 bg-gray-200 dark:text-white text-gray-700 px-3  poppins font-semibold py-2 rounded-xl cursor-pointer'>Login</Link>
+                  className='dark:bg-gray-900 bg-gray-200 dark:text-white text-gray-700 px-3  md:text-base text-[10px] poppins font-semibold py-2 rounded-xl cursor-pointer'>Login</Link>
                  }
                 </div>
             </div>

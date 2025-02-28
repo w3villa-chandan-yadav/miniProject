@@ -135,7 +135,7 @@ const Tranding = () => {
         <div
             ref={container}
             className='p-2 w-full h-full overflow-x-scroll py-4'>
-            <div className='flex flex-wrap dark:bg-black bg-white w-full justify-center items-center md:gap-3 gap-1 py-4 md:relative fixed md:top-0 top-[60px] left-[50%] transform translate-x-[-50%] z-10 '>
+            <div className='flex flex-wrap dark:bg-black bg-white w-full z-20 justify-center items-center md:gap-3 gap-1 py-4 md:relative fixed md:top-0 top-[60px] left-[50%] transform translate-x-[-50%]  '>
             <h2
             onClick={()=>{
                 setPageNo(1)

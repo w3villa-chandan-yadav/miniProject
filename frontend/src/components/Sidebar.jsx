@@ -41,39 +41,39 @@ const Sidebar = () => {
 
 
   return (
-    <div className='md:w-[90%] w-full h-full flex flex-nowrap relative md:bg-transparent bg-white group mx-auto '>
+    <div className='md:w-[90%] w-full h-full flex flex-nowrap relative md:bg-transparent dark:bg-black bg-white group mx-auto '>
         <div className='w-full flex md:flex-col items-center h-full  rounded-md '>
         <Link
         to="/"
         className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
-                <HiHome className='md:text-2xl text-xl md:dark:text-white text-gray-700    mx-auto'/>
+                <HiHome className='md:text-2xl text-xl md:dark:text-white dark:text-gray-300 text-gray-700    mx-auto'/>
             </Link>
 
             <Link 
             to="/popular"
             className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
-                <SiFireship className='md:text-2xl text-xl md:dark:text-white text-gray-700  mx-auto'/>
+                <SiFireship className='md:text-2xl text-xl md:dark:text-white dark:text-gray-300 text-gray-700  mx-auto'/>
             </Link>
 
            {user && <Link   
               to="/liked"
                 className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
-                <BsChatLeftHeartFill className='md:text-2xl text-xl md:dark:text-white text-gray-700   mx-auto'/>
+                <BsChatLeftHeartFill className='md:text-2xl text-xl md:dark:text-white dark:text-gray-300 text-gray-700   mx-auto'/>
             </Link>}
 
            {user && <Link
             to="/watchLater"
             className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
-                <MdWatchLater className='md:text-2xl text-xl md:dark:text-white text-gray-700  mx-auto'/>
+                <MdWatchLater className='md:text-2xl text-xl md:dark:text-white dark:text-gray-300 text-gray-700  mx-auto'/>
             </Link>}
             <Link to={"/latest/trending"} className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
-                <MdExplore  className='md:text-2xl text-xl md:dark:text-white text-gray-700   mx-auto'/>
+                <MdExplore  className='md:text-2xl text-xl md:dark:text-white dark:text-gray-300 text-gray-700   mx-auto'/>
             </Link>
 
             <div 
             onClick={()=>dispatch(addLanguage(true))}
             className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
-                <MdOutlineLanguage  className='md:text-2xl text-xl md:dark:text-white text-gray-700   mx-auto'/>
+                <MdOutlineLanguage  className='md:text-2xl text-xl md:dark:text-white dark:text-gray-300 text-gray-700   mx-auto'/>
             </div>
            
             
@@ -81,7 +81,7 @@ const Sidebar = () => {
               user &&  <button 
               onClick={handleLogout}
               className='px-[3px] py-[10px]   md:border-b-[1px] border-gray-600 w-full '>
-                <IoLogOutSharp  className='md:text-2xl text-xl md:dark:text-white text-gray-700   mx-auto'/>
+                <IoLogOutSharp  className='md:text-2xl text-xl md:dark:text-white dark:text-gray-300 text-gray-700   mx-auto'/>
             </button>
 
             }

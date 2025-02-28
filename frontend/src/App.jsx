@@ -50,8 +50,8 @@ function App() {
   return (
     <div className='dark:bg-black bg-gray-400 relative'>
      {
-      loading &&  <div className="w-full h-full grid place-items-center absolute inset-0 z-50 overflow-hidden">
-      <img className="w-full h-full object-cover sm:max-w-full sm:max-h-full" src={imageLoading} alt="Loading" />
+      loading &&  <div className="w-screnn h-screen grid place-items-center absolute inset-0 z-50 overflow-hidden">
+      <img className="w-full h-full bg-fill" src={imageLoading} alt="Loading" />
     </div>
      }
     {

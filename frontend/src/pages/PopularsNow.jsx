@@ -26,7 +26,10 @@ function PopularsNow() {
 
   return (
     <div className="w-full h-full overflow-x-auto p-4">
-      <h1 className="'text-center text-xl poppins font-bold dark:text-white text-black'">Live Treanding</h1>
+      <div className="flex justify-center">
+      <h1 className="'text-center  text-xl poppins font-bold dark:text-white text-black'">Live Trending</h1>
+
+      </div>
       <div className='w-full flex flex-wrap gap-4 justify-center'>
           {cards.map((card,ind) => 
           (
