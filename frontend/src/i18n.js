@@ -4,7 +4,7 @@ import {initReactI18next} from "react-i18next"
 
 
 i18n.use(LanguageDetector).use(initReactI18next).init({
-    debug:true,
+    // debug:true,
     fallbackLng:"en",
     returnObjects:true,
     resources:{

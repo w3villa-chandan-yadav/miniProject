@@ -26,7 +26,7 @@ const Header = () => {
 
     const fetchSuggestion =async ()=>{
       if(input.length < 2 ) return
-      console.log("calling api",input)
+      // console.log("calling api",input)
       
       // const url = `https://api.themoviedb.org/3/search/multi?query=${input}&include_adult=false&language=en-US&page=1`;
       const url = `https://api.themoviedb.org/3/search/movie?query=${input}&include_adult=false&language=en-US&page=1`;
@@ -51,7 +51,7 @@ const Header = () => {
 
 
 
-    console.log(searchingData);
+    // console.log(searchingData);
 
 
     const handleInput = (e)=>{
@@ -141,18 +141,18 @@ const Header = () => {
                     className='outline-none dark:text-white  md:w-full w-[100px]'  
                     />
                       { searchingData.length >=1 &&
-                    <div className='w-[250px] rounded-md overflow-y-auto max-h-[250px] h-auto absolute top-[120%] z-30 bg-[rgba(245,245,245,0.6)] backdrop-blur-[2px]'>
+                    <div className='w-[250px] rounded-md overflow-y-auto max-h-[250px] h-auto absolute top-[120%]  bg-[rgba(245,245,245,0.6)] z-50 backdrop-blur-[2px]  continaer '>
                           {
                             searchingData.map((ele,ind)=>{
                               return(
                                 <div key={ind}
-                                className='px-3 py-3 '
+                                className='md:px-3 md:py-3 px-2 py-2 border-b-[1px] border-gray-600/30 cursor-pointer hover:bg-red-400/40 '
                                 onClick={()=>{setInput(ele.title)
                                   navigate(`/details/movie/${ele.id}`)
                                   setSearchingData([])
                                   
                                 }}
-                                >{ele.title}
+                                >{ele.title.length > 21 ? `${ele.title.substr(0,21)}...`:ele.title}
                                   </div>
 
                               )

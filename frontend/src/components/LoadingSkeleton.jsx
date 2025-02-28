@@ -3,8 +3,8 @@ import React from 'react'
 const LoadingSkeleton = () => {
   return (
     <div 
-    className='lg:w-[210px] md:w-[180px]  w-[170px] relative shrink-0 lg:h-[370px] md:h-[320px]  h-[300px] group rounded-md overflow-hidden dark:bg-[rgba(255,255,255,0.8)] bg-[rgba(0,0,0,0.7)] dark:text-black text-white backdrop-blur-[2px]'>
-<div className='w-full lg:h-[320px] md:h-[260px] h-[230px] group-hover:scale-95 transition-all dark:bg-slate-500 duration-50 bg-slate-300 animate-pulse' loading='lazy'  />
+    className='lg:w-[200px]  md:w-[190px]  w-[150px] relative shrink-0 shadow-md dark:shadow-sm dark:shadow-white shadow-black lg:h-[340px] md:h-[300px]  h-[240px] group rounded-md  dark:text-black text-white '>
+<div className='w-full lg:h-[285px] md:h-[250px] rounded-md h-[185px]   group-hover:scale-95 transition-all dark:bg-slate-500 duration-50 bg-slate-300 animate-pulse' loading='lazy'  />
 <div className='flex justify-between  gap-1  items-center mx-2'>    
     <div className='flex  flex-1 flex-col gap-2'>
 

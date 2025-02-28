@@ -48,7 +48,7 @@ const Tranding = () => {
             setData(data.results)
             totalPageNoRef.current = data.total_pages // Save totalPageNo in useRef
         } catch (error) {
-            console.log('error', error)
+            // console.log('error', error)
             setLoading(false)
         }
     }
@@ -80,7 +80,7 @@ const Tranding = () => {
             ])
             setLoading(false)
         } catch (error) {
-            console.log('error', error)
+            // console.log('error', error)
             setLoading(false)
         }finally{
             setLoading(false)
@@ -108,7 +108,7 @@ const Tranding = () => {
     }, [genera])
 
     useEffect(() => {
-        console.log("called",pageNo,genera)
+        // console.log("called",pageNo,genera)
         if (pageNo > 1) {
             fetchNewData()
         }

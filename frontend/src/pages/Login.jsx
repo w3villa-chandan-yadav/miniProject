@@ -62,9 +62,9 @@ const Login = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log("calling")
+    // console.log("calling")
     if (!validateForm()) {
-        console.log("is validate")
+        // console.log("is validate")
       // Handle successful form submission
       return
     }
@@ -72,12 +72,12 @@ const Login = () => {
     try {
         
        const user = await createUserWithEmailAndPassword(auth,formData.email,formData.password);
-       console.log('step 1')
+      //  console.log('step 1')
 
       //  const user = auth.currentUser ;
 
-       console.log(user.user)
-       console.log("user register succcessfuly")
+      //  console.log(user.user)
+      //  console.log("user register succcessfuly")
        dispatch(addUser(user.user))
        localStorage.setItem("user",JSON.stringify(user.user)) ;
 
@@ -87,7 +87,7 @@ const Login = () => {
 
     } catch (error) {
         toast.error(error.message)
-        console.log("error in firebase",error)
+        // console.log("error in firebase",error)
     }
   };
 

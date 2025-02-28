@@ -22,7 +22,7 @@ const DisplayMovie = () => {
     const {user} = useSelector(state=>state.user)
     const {populars} = useSelector((state)=>state.movie)
 
-    console.log(populars)
+    // console.log(populars)
 
     const  {type,id} = useParams();
     const {currentLanguage} = useSelector((state)=>state.movie)
@@ -63,7 +63,7 @@ const options = {
 
        const result = await data.json();
 
-       console.log(result)
+      //  console.log(result)
        setMovies(result)
 
     }
@@ -90,7 +90,7 @@ const options = {
 
         const result = await fetch(url, options);
         const data = await result.json();
-        console.log(data) 
+        // console.log(data) 
 
         const timer = await new Promise((r)=>setTimeout(()=>r("promise resolve"),2000))
 
@@ -135,7 +135,7 @@ const options = {
 
       const result = await data.json() ;
 
-      console.log(result.results)
+      // console.log(result.results)
 
       if(result.status_code ===34){
         setRecommendations([])  
@@ -281,7 +281,7 @@ const options = {
         <img className='w-full h-full absolute inset-0 ' loading='lazy' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt='poster'/>
         {/* <div className='w-full absolute inset-0 h-full bg-gradient-to-tr  from-black  to-transparent'/> */}
         <h2 className='anton font-extrabold md:text-4xl text-xl  text-white z-10 relative text-center '>{movie?.title}</h2>
-        <div className='relative mx-auto   z-40'>
+        <div className='relative mx-auto   z-20'>
         <div className='flex justify-center md:flex-row felx-col gap-3 flex-wrap '>
           <div className='md:w-[300px] md:h-[370px] w-[200px] hidden md:block  h-[230px]  relative  '>
             <img className='w-full h-full rounded-md hover:-translate-y-3 transition-all duration-150' loading='lazy' src={`https://image.tmdb.org/t/p/w342/${movie?.poster_path}`} />
@@ -340,7 +340,7 @@ const options = {
 
                     castt?.cast?.slice(0,16).map((ele,inx)=>{
                          return(
-                          ele.profile_path && <div className='mx-auto'>
+                          ele.profile_path && <div className='mx-auto' key={inx}>
                               <img src={`https://image.tmdb.org/t/p/w92/${ele?.profile_path}`} className='md:w-[100px] md:h-[100px] w-[60px] h-[60px] object-cover rounded-full' />
                           <p className='text-nowrap text-center md:text-sm text-[10px] font-bold dark:text-white'>{ele.name.length > 13 ? ele.name.substr(0,12) : ele.name}</p>    
                           <p className='text-center dark:text-white  md:text-sm text-[9px]'>{ele.known_for_department}</p>
@@ -356,7 +356,7 @@ const options = {
 
                 castt?.crew?.slice(0,22).map((ele,inx)=>{
                   return(
-                   ele.profile_path && <div>
+                   ele.profile_path && <div key={inx}>
                        <img src={`https://image.tmdb.org/t/p/original/${ele?.profile_path}`} className='w-[100px] h-[100px] object-cover rounded-full' />
                    <p className='text-nowrap text-center dark:text-white'>{ele.name.length > 13 ? ele.name.substr(0,12) : ele.name}</p>    
                    <p className='text-center dark:text-white'>{ele.known_for_department}</p>

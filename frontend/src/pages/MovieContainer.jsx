@@ -9,7 +9,7 @@ const MovieContainer = () => {
     const [moviess,setMoviess] = useState([]);
     const [loading,setLoading] = useState(true)
     const {watchLater,favourt,currentLanguage} = useSelector((state)=>state.movie)
-   console.log(i18n.language)
+  //  console.log(i18n.language)
     const [serial, setSerial] = useState([])
 
     const [searchBy,setSearchBy] = useState("popular")
@@ -32,7 +32,7 @@ const data =  await fetch(url,options) ;
 const result = await data.json()
 
 // const time =await new Promise((r)=>setTimeout(()=>r("promise resolve"),4000))
-console.log(result.results)
+// console.log(result.results)
 setSerial(result.results)
 setLoading(false)
 
@@ -41,7 +41,7 @@ setLoading(false)
 
 
     const fetchMainMoives  = async()=>{
-      console.log("main movies")
+      // console.log("main movies")
         const url = `https://api.themoviedb.org/3/movie/${searchBy}?language=${i18n.language}-US&page=1`;
 const options = {
   method: 'GET',
@@ -54,7 +54,7 @@ const options = {
 const data =  await fetch(url,options) ;
 
 const result = await data.json()
-console.log(result.results)
+// console.log(result.results)
 setMovies(result.results)
 
 if(moviess.length > 2){
@@ -66,7 +66,7 @@ if(moviess.length > 2){
     
 } 
 
-console.log(movies)
+// console.log(movies)
 
 
 useEffect(()=>{

@@ -14,7 +14,7 @@ const LatestRelease = ({movies,loading,title,show=false,setSearchBy,background=f
     
     // console.log(watchLater , favourt)
 
-    console.log(movies)
+    // console.log(movies)
 
     
 

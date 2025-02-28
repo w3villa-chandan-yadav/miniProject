@@ -21,7 +21,7 @@ export const SingleCard = ({ele}) => {
 
         const dispatch = useDispatch()
         const handleWatchLater =(e,movi)=>{
-            console.log(user)
+            // console.log(user)
             e.preventDefault();
             e.stopPropagation();
             if(!user){
@@ -67,7 +67,7 @@ export const SingleCard = ({ele}) => {
                     media_type:movi?.media_type ?? "movie",
                     original_name:movi?.original_name ?? "random"
                 },user.uid)
-                console.log(movi)
+                // console.log(movi)
                 
                 
           

@@ -57,7 +57,7 @@ const Slide =({movie})=>{
 
 
   const handleNavigate=()=>{
-    console.log("navigatiion in swiper")
+    // console.log("navigatiion in swiper")
     navigate(movie.media_type === "tv" ? `/details/tv/${movie.id}` :`/details/movie/${movie.id}`)
   }
 

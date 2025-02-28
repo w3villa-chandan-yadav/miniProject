@@ -32,7 +32,7 @@ const SignIn = () => {
 
         const user = await signInWithEmailAndPassword(auth,email,password)
        toast.success("userlogin")
-        console.log(user.user)
+        // console.log(user.user)
 
 
         dispatch(addUser(user.user))
@@ -43,17 +43,17 @@ const SignIn = () => {
 
 
 
-      console.log("User login successfully");
+      // console.log("User login successfully");
       // Redirect to login page or home page
     } catch (error) {
       setError(error.message);
       toast.error(error.message)
-      console.error("Error in Firebase:", error.message);
+      // console.error("Error in Firebase:", error.message);
     }
   };
 
   useEffect(()=>{
-    console.log(user)
+    // console.log(user)
       if(user){
         navigate("/")
       }

@@ -34,12 +34,12 @@ const Hooks = () => {
                 querySnapshot.forEach(async (docSnapshot) => {
                     // Get the document reference and delete it
                     await deleteDoc(doc(db, "favouret", docSnapshot.id));
-                    console.log("Movie removed from Watch Later:", docSnapshot.id);
+                    // console.log("Movie removed from Watch Later:", docSnapshot.id);
                 });
             } else {
                 // If the movie does not exist, add it
                 const result = await addDoc(collection(db, "favouret"), movie);
-                console.log("Movie added to Watch Later with ID:", result.id);
+                // console.log("Movie added to Watch Later with ID:", result.id);
             }
         } catch (error) {
             console.error("Error handling movie in Watch Later:", error);
@@ -59,12 +59,12 @@ const Hooks = () => {
                 querySnapshot.forEach(async (docSnapshot) => {
                     // Get the document reference and delete it
                     await deleteDoc(doc(db, "watchLater", docSnapshot.id));
-                    console.log("Movie removed from Watch Later:", docSnapshot.id);
+                    // console.log("Movie removed from Watch Later:", docSnapshot.id);
                 });
             } else {
                 // If the movie does not exist, add it
                 const result = await addDoc(collection(db, "watchLater"), movie);
-                console.log("Movie added to Watch Later with ID:", result.id);
+                // console.log("Movie added to Watch Later with ID:", result.id);
             }
         } catch (error) {
             console.error("Error handling movie in Watch Later:", error);
@@ -75,14 +75,14 @@ const Hooks = () => {
 
     const testFirestoreConnection = async () => {
         try {
-            console.log("step 1")
+            // console.log("step 1")
           const querySnapshot = await getDocs(collection(db, "test"));
-          console.log("step 2")
+        //   console.log("step 2")
           querySnapshot.forEach((doc) => {
             console.log(doc.id, " => ", doc.data());
           });
         } catch (error) {
-          console.error("Error fetching documents: ", error);
+        //   console.error("Error fetching documents: ", error);
         }
       };
 
@@ -110,14 +110,14 @@ const Hooks = () => {
 
 
       const getfavouretLater = async()=>{
-        console.log("calling in watch")
+        // console.log("calling in watch")
         const data = []
 
         try {
             const queryee = await query(collection(db,'favouret'),where("uuid","==",user.uid))
             const querySnapShort  = await getDocs(queryee);
             querySnapShort.forEach((doc) => {
-                console.log(doc.id, " => ", doc.data());
+                // console.log(doc.id, " => ", doc.data());
                  data.push({...doc.data()})
               });
             //   localStorage.setItem("movie",JSON.stringify(data))
