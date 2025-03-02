@@ -1,0 +1,20 @@
+.slider-container .swiper {
+  width: 100%;
+}
+
+.slider-container .swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 340px;
+}
+
+.slider-container .swiper-slide img {
+  display: block;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .slider-container .swiper-slide {
+      width: 220px;
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { LatestRelease, SliderMovies } from '../components'
+import { DesignerSlider, LatestRelease, SliderMovies } from '../components'
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
@@ -79,29 +79,29 @@ useEffect(()=>{
 },[currentLanguage])
   return (
     <div className=' h-full  overflow-y-auto  continaer'>  
-     <div className=' relative w-full  h-[300px] lg:h-[120%] md:h-[500px] max-h-[1200px]  p-[9px] '>
+     <div className=' relative w-full  h-[350px] lg:h-[120%] md:h-[500px] max-h-[1200px]  p-[9px] '>
             <SliderMovies movies={movies}/>
      </div>
      <div className='w-full h-auto '>
         <LatestRelease movies={movies}  loading={loading} title={searchBy} show={true} setSearchBy={setSearchBy}  background={true}  />
+        <div className=' relative w-full  mb-[20px]  '>
+            <DesignerSlider movies={movies}/>
+     </div>
 
          <LatestRelease movies={serial} loading={loading} title={t("LatestRelease")}  background={true  }/>
   
               {   watchLater.length >= 1 && <LatestRelease movies={watchLater} loading={loading} title={t("WatchLater")}/>
               
               }
+          
 
               {   favourt.length >= 1 && <LatestRelease movies={favourt} loading={loading} title={t("Favorite")}/>
               
                 }
-
-
-   
-
-     
-
-
      </div>
+     {/* <div className=' relative w-full  mb-[20px]  '>
+            <DesignerSlider movies={movies}/>
+     </div> */}
     
      </div>
   )

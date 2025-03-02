@@ -18,7 +18,7 @@ const SliderMovies = ({movies}) => {
    
 
   return (
-        <div className='lg:h-full md:h-[500px] h-[300px]  max-h-[1200px] w-full absolute inset-0  '>
+        <div className='lg:h-full md:h-[500px] h-[350px]  max-h-[1200px] w-full absolute inset-0  '>
         <Swiper
         spaceBetween={30}
         pagination={{
@@ -63,13 +63,13 @@ const Slide =({movie})=>{
 
 
     return(
-        <div className='w-full lg:h-full md:pr-[10%]  pr-[20px] flex justify-end md:items-center items-end md:h-[500px] h-[300px] max-h-[1200px] relative'>
+        <div className='w-full lg:h-full md:pr-[10%]  pr-[20px] flex justify-end md:items-center items-end md:h-[500px] h-[350px] max-h-[1200px] relative'>
           <div className="w-full h-full hidden md:block bg-gradient-to-l from-black via-5%  via-black to-transparent  absolute inset-0 z-[2]" />
           <div className="w-full h-full  md:hidden bg-gradient-to-l from-black via-5%  via-black/60 to-transparent  absolute inset-0 z-[2]" />
 
           
             <img className='absolute inset-0' loading='lazy' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`}/>
-            <div className=' px-4 md:py-7 py-3 flex  justify-center md:gap-5 gap-2 flex-col z-[4]  md:w-[490px] w-[230px] h-auto  '>
+            <div className=' px-4 md:py-7 py-3 flex  justify-center md:gap-5 gap-2 flex-col z-[4]  md:w-[490px] w-[90%] h-auto  '>
                 <h2 className='text-right anton md:text-3xl text-base md:ml-2 font-semibold md:font-bold text-white '>{movie.title}</h2>
             <div className='flex items-center justify-end gap-4'>
                   <button className='md:px-3 px-2 text-white cursor-pointer  font-bold rounded-2xl md:py-2 py-1 bg-violet-950 poppins md:text-[12px] text-[9px]'>
