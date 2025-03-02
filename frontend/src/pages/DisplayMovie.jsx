@@ -292,7 +292,7 @@ const options = {
             <div className='flex items-center gap-2'>
               {
                movie && movie?.genres?.slice(0,4).map((ele,ind)=>{
-                  return <button key={ind} className='px-3 text-white cursor-pointer  font-bold rounded-2xl py-2 bg-violet-950 poppins md:text-[12px] text-[9px]'>
+                  return <button key={ind} className={`px-3 text-white ${ind ===3 ? "hidden md:block" :""} cursor-pointer  font-bold rounded-2xl py-2 bg-violet-950 poppins md:text-[12px] text-[9px]`}>
                   {ele?.name}
              </button>
                 })
@@ -356,11 +356,11 @@ const options = {
 
                 castt?.crew?.slice(0,22).map((ele,inx)=>{
                   return(
-                   ele.profile_path && <div key={inx}>
-                       <img src={`https://image.tmdb.org/t/p/original/${ele?.profile_path}`} className='w-[100px] h-[100px] object-cover rounded-full' />
-                   <p className='text-nowrap text-center dark:text-white'>{ele.name.length > 13 ? ele.name.substr(0,12) : ele.name}</p>    
-                   <p className='text-center dark:text-white'>{ele.known_for_department}</p>
-                    </div>
+                   ele.profile_path && <div key={inx} className='mx-auto'>
+                              <img src={`https://image.tmdb.org/t/p/w92/${ele?.profile_path}`} className='md:w-[100px] md:h-[100px] w-[60px] h-[60px] object-cover rounded-full' />
+                              <p className='text-nowrap text-center md:text-sm text-[10px] font-bold dark:text-white'>{ele.name.length > 13 ? ele.name.substr(0,12) : ele.name}</p>    
+                              <p className='text-center dark:text-white  md:text-sm text-[9px]'>{ele.known_for_department}</p>
+                              </div>
                    
                   )
              }) : <p className='poppines text-bold dark:text-white text-black'> No data Avalable</p>
